@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Engeplus</string>
+    <string name="title_activity_main">Engeplus</string>
+    <string name="package_name">br.com.engeplus.engeplus</string>
+    <string name="custom_url_scheme">br.com.engeplus.engeplus</string>
+</resources>

@@ -1,0 +1,78 @@
+<ion-header mode="ios"
+            translucent="true">
+  <ion-toolbar>
+    <ion-buttons collapse="true"
+                 slot="start">
+      <ion-icon (click)="back()"
+                src="assets/icons/back.svg"
+                style="max-width:18px;"
+                slot="icon-only"></ion-icon>
+    </ion-buttons>
+    <ion-buttons collapse="true"
+                 slot="end">
+      <ion-button (click)="navTo('meus-dados')">
+        <p> {{this.userService.getUsuario().nomeCliente | titlecase }} &nbsp;</p>
+        <ion-icon src="assets/icons/profile.svg"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Finalizar Grupo</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content mode="ios"
+             [fullscreen]="true">
+  <ion-header mode="ios"
+              collapse="condense">
+    <ion-toolbar>
+      <ion-buttons collapse="true"
+                   slot="start">
+        <ion-back-button defaultHref="tabs"
+                         text=""
+                         icon="arrow-back-outline"></ion-back-button>
+
+      </ion-buttons>
+      <ion-buttons collapse="true"
+                   slot="end">
+        <ion-button (click)="navTo('meus-dados')"> {{this.userService.getUsuario().nomeCliente | titlecase }} &nbsp;
+          <ion-icon src="assets/icons/profile.svg"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+    <ion-toolbar>
+      <ion-title size="large">Finalizar {{nomeGrupo | titlecase}} </ion-title>
+    </ion-toolbar>
+    <ion-toolbar>
+      <ion-title size="medium">{{this.userService.getUsuario().complemento | titlecase}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="resumo">
+    <h3>Suas alternativas somaram:</h3>
+    <h2><strong>{{valorTotal | currency:'BRL'}}</strong></h2>
+
+    <h3>Opções de parcelamento:</h3>
+    <ion-item lines="none">
+      <ion-label>{{parcelas.value?"Parcelas:":"Selecione:"}}</ion-label>
+      <ion-select #parcelas>
+        <ion-select-option *ngFor="let parcela of qtdParcela(valorTotal);index as i">{{ i + 1}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <h3>Dia de vencimento:</h3>
+    <ion-item lines="none">
+      <ion-label>Dia </ion-label>
+      <ion-select #diavenc>
+        <ion-select-option *ngFor="let dia of counter(30);index as j">{{ j + 1}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+  </div>
+
+  <ion-row class="buttons-row">
+    <ion-button fill="outline"
+                (click)="this.back()"> Voltar </ion-button>
+    <ion-button (click)="finalizarGrupo(parcelas.value,diavenc.value)" [disabled]="!(parcelas.value && diavenc.value)"
+                fill="solid">Finalizar</ion-button>
+  </ion-row>
+
+</ion-content>

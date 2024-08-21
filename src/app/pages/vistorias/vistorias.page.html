@@ -1,0 +1,98 @@
+<ion-header mode="ios"
+            translucent="true">
+  <ion-toolbar>
+    <ion-buttons collapse="true"
+                 slot="start">
+      <ion-button (click)="this.back()">
+        <ion-icon src="assets/icons/back.svg"
+                  style="max-width:18px;"
+                  slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons collapse="true"
+                 slot="end">
+      <!-- <ion-button (click)="navTo('meus-dados')">
+        <p>
+          {{this.userService.getUsuario().nomeCliente | titlecase }}
+          &nbsp;
+        </p>
+        <ion-icon src="assets/icons/profile.svg"></ion-icon>
+      </ion-button> -->
+    </ion-buttons>
+    <ion-title>Vistorias</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content mode="ios"
+             [fullscreen]="true">
+  <ion-header mode="ios"
+              collapse="condense">
+    <ion-toolbar>
+      <ion-buttons collapse="true"
+                   slot="start">
+        <ion-button (click)="this.back()">
+          <ion-icon src="assets/icons/back.svg"
+                    style="max-width:18px;"
+                    slot="icon-only"></ion-icon>
+                    <p class="condensed-title">Vistorias</p>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- <ion-item lines="none"  class="filtroVistoria">
+    <ion-label>Filtrar:</ion-label>
+    <ion-select (ionChange)="filter($event)"
+                value="0">
+      <ion-select-option value="0">Todos</ion-select-option>
+      <ion-select-option *ngFor="let item of empreendimentos"
+                         [value]="item.id_empreendimento">{{item.empreendimento | titlecase}}</ion-select-option>
+    </ion-select>
+  </ion-item> -->
+  <ion-searchbar mode="ios" (ionChange)="filterOpcoes($event)" placeholder="Buscar"></ion-searchbar>
+  
+  <div class="contAddButton">
+    <div id="add-button" class="add-button add-button-hover" (click)="adicionarAgendamento()" [routerLink]="['vistoria-editar']">
+        <ion-icon size="large" name="add-circle" color="primary"></ion-icon>
+        <p id="add-p">Adicionar vistoria</p>
+    </div>
+  </div>
+
+  <ion-list>
+    <ion-card *ngIf="vistorias?.length==0">
+      <ion-card-header>
+        <ion-card-subtitle>Nenhuma vistoria encontrada.</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+      </ion-card-content>
+    </ion-card>
+    <ion-card *ngFor="let item of vistoriasFiltradas;let i=index"
+              [routerLink]="['vistoria/'+item.id_vistoria]">
+      <ion-card-header>
+        <ion-card-title>
+          {{item.unidade | titlecase}}
+          <ion-icon name="ban" color="danger" *ngIf="item.status == 2"></ion-icon>
+        </ion-card-title>
+        <ion-card-subtitle>{{item.empreendimento | titlecase}}</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        <!-- <ion-button (click)="presentToast()"
+                    color="transparent">Copiar linha digitável</ion-button>
+        <ion-button color="transparent">Download</ion-button> -->
+      </ion-card-content>
+    </ion-card>
+
+  </ion-list>
+
+  <!-- <ion-fab vertical="bottom"
+           horizontal="end"
+           slot="fixed">
+    <ion-fab-button (click)="adicionarAgendamento()"
+    [routerLink]="['vistoria-editar']">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab> -->
+
+</ion-content>

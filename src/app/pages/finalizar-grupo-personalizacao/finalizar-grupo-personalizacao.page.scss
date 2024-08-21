@@ -1,0 +1,49 @@
+ion-title.title-large {
+  color: var(--ion-color-primary);
+  font-weight: bolder;
+  font-size: 22px;
+  padding: 0 10px;
+  height: auto;
+  transform-origin: left top;
+  bottom: auto;
+  align-items: flex-start;
+}
+ion-title.title-medium {
+  color: var(--ion-color-primary);
+  font-weight: 400;
+  font-size: 22px;
+  text-align: start;
+  padding: 0 12px;
+  height: auto;
+  transform-origin: left top;
+  bottom: auto;
+  align-items: flex-start;
+}
+
+.resumo {
+  padding: 20px;
+  ion-item {
+    --padding-start: 0px;
+    font-size: 20px;
+  }
+}
+
+.buttons-row {
+  position: sticky;
+  bottom: 0;
+  background-color: white;
+  z-index: 1;
+}
+
+ion-row {
+  justify-content: space-between;
+  padding: 0 15px;
+  ion-button {
+    transition: all 0.3s;
+    font-weight: 600;
+    font-size: 16px;
+    margin-top: 1vh;
+    height: 50px;
+    width: 45%;
+  }
+}

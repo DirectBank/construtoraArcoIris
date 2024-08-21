@@ -1,0 +1,39 @@
+<ion-content>
+
+    <div class="topoMenu"
+         (click)="fechar()">
+    </div>
+
+    <ion-list>
+        <ion-item lines="none"
+                  (click)="navTo('meus-dados')">
+            <ion-icon slot="start"
+                      name="person-outline"></ion-icon>
+            <ion-label>Meus Dados</ion-label>
+        </ion-item>
+        <ion-item lines="none">
+            <ion-icon slot="start"
+                      name="finger-print-outline"></ion-icon>
+            <ion-label>Biometria</ion-label>
+            <ion-toggle slot="end"
+                        mode="ios"
+                        [(ngModel)]="usarBiometria"
+                        (ionChange)="openPassword(false,true,$event)"></ion-toggle>
+        </ion-item>
+        <ion-item lines="none"
+                  (click)="openLGPD(true)">
+            <ion-icon slot="start"
+                      name="document-outline"></ion-icon>
+            <ion-label>Termos de uso</ion-label>
+        </ion-item>
+        <ion-item lines="none"
+                  (click)="openPassword(true,false,$event)">
+            <ion-icon slot="start"
+                      name="lock-open-outline"></ion-icon>
+            <ion-label>Alterar senha</ion-label>
+        </ion-item>
+
+    </ion-list>
+
+
+</ion-content>

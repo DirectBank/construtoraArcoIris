@@ -1,0 +1,56 @@
+<ion-content>
+
+  <div class="loginBox"
+       [ngClass]="{'': !this.env.empresaAtual.loginBkgImg, 'loginBoxBkg': this.env.empresaAtual.loginBkgImg}"
+       [style.backgroundImage]="pageBkg()">
+    <div class="logo-cliente">
+      <object type="image/svg+xml"
+              data="../../../assets/svg/logo_ompplus.svg"></object>
+    </div>
+
+    <p class="greeting-msg">
+      <b>Esqueci minha senha</b><br>
+      Não se preocupe. Preencha seu e-mail que enviaremos um link para você cadastrar uma nova senha
+    </p>
+
+    <form [formGroup]="esqueciSenhaForm"
+          class="loginBox-inner">
+
+      <ion-item color="transparent">
+        <ion-label position="floating">E-mail</ion-label>
+        <ion-input required
+                   formControlName="email"
+                   type="email"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="floating">CPF (somente números)</ion-label>
+        <ion-input required
+                   formControlName="cpf"
+                   type="tel"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent"
+                lines="none">
+        <ion-button type="submit"
+                    expand="block"
+                    color="primary"
+                    class="btn-login"
+                    (click)="esqueciSenha()"
+                    [disabled]="!esqueciSenhaForm.valid">Enviar</ion-button>
+      </ion-item>
+
+      <ion-button id="esqueci"
+                  fill="clear"
+                  expand="block"
+                  [routerDirection]="'back'"
+                  routerLink="/login">voltar</ion-button>
+
+    </form>
+  </div>
+
+  <div class="login-footer">
+    by Workoffice - v {{ versaoApp }}
+  </div>
+
+</ion-content>

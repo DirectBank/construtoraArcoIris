@@ -1,0 +1,73 @@
+<ion-header mode="ios"
+            translucent="true">
+  <ion-toolbar>
+    <ion-buttons collapse="true"
+                 (click)="this.navCtrl.back()"
+                 slot="start">
+      <ion-icon src="assets/icons/back.svg"
+                style="max-width:18px;"
+                slot="icon-only"></ion-icon>
+    </ion-buttons>
+    <ion-buttons collapse="true"
+                 slot="end">
+      <ion-button (click)="navTo('meus-dados')">
+        <p> {{this.userService.getUsuario().nomeCliente | titlecase }} &nbsp;</p>
+        <ion-icon src="assets/icons/profile.svg"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Fale conosco</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content mode="ios"
+             [fullscreen]="true"> 
+  <ion-header mode="ios"
+              collapse="condense">
+    <ion-toolbar>
+      <ion-buttons collapse="true"
+                   slot="start">
+        <ion-button (click)="this.navCtrl.back()"
+                    src="assets/icons/back.svg"
+                    icon="arrow-back-outline"></ion-button>
+
+      </ion-buttons>
+      <ion-buttons collapse="true"
+                   slot="end">
+        <ion-button (click)="navTo('meus-dados')"> {{this.userService.getUsuario().nomeCliente | titlecase }} &nbsp;
+          <ion-icon src="assets/icons/profile.svg"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+    <ion-toolbar>
+      <ion-title size="large">Fale conosco </ion-title>
+    </ion-toolbar>
+    <ion-toolbar>
+      <ion-title size="medium">{{this.userService.getUsuario().complemento | titlecase}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-item lines="none">
+    <h4>{{this.userService.getUsuario().nomeCliente | titlecase }}</h4>
+  </ion-item>
+  <ion-item lines="none">
+    <p>{{this.userService.getUsuario().email }}</p>
+  </ion-item>
+
+  <ion-item lines="none">
+    <ion-label position="stacked">Mensagem</ion-label>
+    <ion-textarea placeholder=" Digite sua mensagem..."
+                  multiline="true"
+                  rows="5"
+                  [(ngModel)]="mensagem"
+                  autoGrow="true"></ion-textarea>
+  </ion-item>
+
+  <ion-row>
+    <ion-button fill="outline"
+                (click)="this.navCtrl.back()">Cancelar</ion-button>
+    <ion-button [disabled]="mensagem.length<10"
+                fill="solid"
+                (click)="enviar()">Enviar</ion-button>
+  </ion-row>
+
+</ion-content>

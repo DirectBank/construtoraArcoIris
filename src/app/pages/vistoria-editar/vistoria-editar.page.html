@@ -1,0 +1,167 @@
+<ion-header mode="ios"
+            translucent="true">
+  <ion-toolbar>
+    <ion-buttons collapse="true"
+                 (click)="back()"
+                 slot="start">
+      <ion-icon src="assets/icons/back.svg"
+                style="max-width:18px;"
+                slot="icon-only"></ion-icon>
+    </ion-buttons>
+    <ion-buttons collapse="true"
+                 slot="end">
+      <!-- <ion-button (click)="navTo('meus-dados')">
+        <p> {{this.userService.getUsuario().nomeCliente | titlecase }} &nbsp;</p>
+        <ion-icon src="assets/icons/profile.svg"></ion-icon>
+      </ion-button> -->
+    </ion-buttons>
+    <ion-title>Nova vistoria</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content mode="ios"
+             #mainscroll
+             [fullscreen]="true">
+  <ion-header mode="ios"
+              collapse="condense">
+    <ion-toolbar>
+      <ion-buttons collapse="true"
+                   slot="start">
+        <ion-button (click)="back()">
+          <ion-icon src="assets/icons/back.svg"
+                    style="max-width:18px;"
+                    slot="icon-only"></ion-icon>
+                    <p class="condensed-title">Nova vistoria</p>
+        </ion-button>
+
+      </ion-buttons>
+      <!-- <ion-buttons collapse="true"
+                   slot="end">
+        <ion-button (click)="navTo('meus-dados')">
+          {{this.userService.getUsuario().nomeCliente | titlecase }} &nbsp;
+          <ion-icon src="assets/icons/profile.svg"></ion-icon>
+        </ion-button>
+      </ion-buttons> -->
+    </ion-toolbar>
+    <!-- <ion-toolbar>
+      <ion-title size="large">Nova vistoria</ion-title>
+    </ion-toolbar>
+    <ion-toolbar>
+      <ion-title size="medium">
+        {{areasVistoria[0]?.unidade | titlecase}}
+      </ion-title>
+    </ion-toolbar> -->
+  </ion-header>
+
+  <!-- <h1>vistoria editar works !!</h1> -->
+  <ion-item color="transparent">
+    <ion-label position="floating">Empreendimento</ion-label>
+    <ion-select #selectEmpreendimentos
+                [(ngModel)]="novaVistoria.id_empreendimento"
+                (ionChange)="empreendimentoChange($event)"
+                interface="alert"
+                placeholder="Selecione um">
+        <ion-select-option *ngFor="let empreendimento of empreendimentos"
+                           [value]="empreendimento.id_empreendimento">{{empreendimento.nome}}</ion-select-option>
+
+    </ion-select>
+</ion-item>
+
+<ion-item color="transparent">
+    <ion-label position="floating">Cliente</ion-label>
+    <ion-select [(ngModel)]="novaVistoria.id_cliente" #selectCliente
+                (ionChange)="clientesChange(selectEmpreendimentos.value,$event)"
+                interface="alert"
+                placeholder="Selecione um">
+        <ion-select-option *ngFor="let cliente of clientes"
+                           [value]="cliente.id_cliente">{{cliente.descricao}}</ion-select-option>
+
+    </ion-select>
+</ion-item>
+
+<ion-item color="transparent">
+    <ion-label position="floating">Contrato</ion-label>
+    <ion-select [(ngModel)]="novaVistoria.id_contrato" #selectContrato
+                interface="alert"
+                placeholder="Selecione um">
+        <ion-select-option *ngFor="let contrato of contratos"
+                           [value]="contrato.id_contrato">{{contrato.descricao}}</ion-select-option>
+
+    </ion-select>
+</ion-item>
+<ion-searchbar mode="ios" (ionChange)="filterOpcoes($event)" placeholder="Buscar"></ion-searchbar>
+<ion-list lines="none">
+  <ion-item *ngFor="let area of areasFiltered">
+    <ion-label>{{area.descricao}}</ion-label>
+    <ion-checkbox slot="end" [(ngModel)]="area.isChecked"></ion-checkbox>
+  </ion-item>
+</ion-list>
+<ion-row class="buttons"
+          *ngIf="!areasVistoria[0]?.finalizada">
+  <ion-button fill="outline"
+              (click)="back()">Cancelar</ion-button>
+  <ion-button fill="solid"
+              (click)="salvar()">Salvar</ion-button>
+</ion-row>
+<!-- [(ngModel)]="entry.isChecked" -->
+  <!-- <ion-row *ngFor="let area of areasVistoria">
+    <ion-col size="12">
+      <ion-item lines="none">
+        <ion-label position="stacked">{{area.area | titlecase}}</ion-label>
+        <ion-textarea placeholder=" Anotações"
+                      multiline="true"
+                      rows="5"
+                      [disabled]="area.finalizada"
+                      [(ngModel)]="area.descricao"
+                      (ionBlur)="vistoriasService.alteraDescricaoVistoria(area)"
+                      autoGrow="true"></ion-textarea>
+      </ion-item>
+      <ion-row class="thumbnails">
+
+        <ion-thumbnail (click)="adicionarFoto(area)"
+                       *ngIf="!area.finalizada">
+          <div>+</div>
+        </ion-thumbnail>
+        <ion-thumbnail *ngFor="let thumb of  area?.listaURL;let j=index"
+                       [style.backgroundImage]="'url('+thumb.url+')'"
+                       (click)="abreImagem(thumb.url)">
+
+          <ion-icon *ngIf="!area.finalizada"
+                    (click)="removeFoto($event,area.id_vistoria,thumb.url_firebase)"
+                    name="close-circle-outline"></ion-icon>
+        </ion-thumbnail>
+      </ion-row>
+      <ion-item lines="none">
+        <ion-select interface="popover"
+                    slot="end"
+                    [(ngModel)]="area.status"
+                    [disabled]="area.finalizada"
+                    (ionChange)="vistoriasService.alteraStatusVistoria(area)"
+                    [placeholder]="status[area.status]">
+          <ion-select-option value="1">Aprovado</ion-select-option>
+          <ion-select-option value="2">Reprovado</ion-select-option>
+          <ion-select-option value="3">Aprovado com restrições</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col size="12" *ngIf="areasVistoria[0]?.urlArquivoAssinatura">
+      <img class="assinatura" [src]="areasVistoria[0].urlArquivoAssinatura" alt="" srcset="">
+    </ion-col>
+  </ion-row>
+
+  <signature-pad [options]="signaturePadOptions"
+                 #signatureCanvas
+                 *ngIf="showSignaturePad"></signature-pad>
+
+  <ion-row class="buttons"
+           *ngIf="!areasVistoria[0]?.finalizada">
+    <ion-button fill="outline"
+                (click)="limparAssinatura()">Cancelar</ion-button>
+    <ion-button fill="solid"
+                (click)="assinar()">Finalizar</ion-button>
+  </ion-row> -->
+
+</ion-content>

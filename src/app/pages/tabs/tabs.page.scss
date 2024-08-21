@@ -1,0 +1,76 @@
+/* Extra small devices (phones, 600px and down) */
+// @media only screen and (max-width: 600px) {}
+/* Small devices (portrait tablets and large phones, 600px and up) */
+// @media only screen and (min-width: 600px) {}
+/* Medium devices (landscape tablets, 768px and up) */
+// @media only screen and (min-width: 768px) {}
+/* Large devices (laptops/desktops, 992px and up) */
+// @media only screen and (min-width: 992px) {}
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+// @media only screen and (min-width: 1200px) {}
+
+@media only screen and (max-width: 600px) {
+ion-tab-bar {
+    --background: var(--ion-color-primary);
+    // border-top-left-radius: 10px;
+    // border-top-right-radius: 10px;
+    ion-icon,
+    ion-label {
+        color: var(--ion-color-primary-yellow);
+    }
+    .tab-selected:active::before {
+        background: linear-gradient(180deg, #6e6e6e, var(--ion-color-primary));
+    }
+    .tab-selected::before {
+        transition: all 2s;
+        content: " ";
+        width: 15%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        background: linear-gradient(0deg, #6e6e6e, var(--ion-color-primary));
+    }
+    :nth-child(1).tab-selected::before {
+        left: 9.5%;
+    }
+    :nth-child(2).tab-selected::before {
+        left: 42.5%;
+    }
+    :nth-child(3).tab-selected::before {
+        right: 9.5%;
+    }
+}
+}
+@media only screen and (min-width: 600px) {
+    ion-tab-bar {
+        --background: var(--ion-color-primary);
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        ion-icon,
+        ion-label {
+            color: var(--ion-color-primary-yellow);
+        }
+        .tab-selected:active::before {
+            background: linear-gradient(180deg, #6e6e6e, var(--ion-color-primary));
+        }
+        .tab-selected::before {
+            transition: all 2s;
+            content: " ";
+            width: 15%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            background: linear-gradient(0deg, #6e6e6e, var(--ion-color-primary));
+        }
+        :nth-child(1).tab-selected::before {
+            left: 11.5%;
+        }
+        :nth-child(2).tab-selected::before {
+            left: 42.5%;
+        }
+        :nth-child(3).tab-selected::before {
+            right: 11.5%;
+        }
+    }
+}
+

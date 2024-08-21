@@ -1,0 +1,133 @@
+ion-title.title-large {
+  color: var(--ion-color-primary);
+  font-weight: bolder;
+  font-size: 22px;
+  padding: 0 10px;
+  height: auto;
+  transform-origin: left top;
+  bottom: auto;
+  align-items: flex-start;
+}
+ion-title.title-medium {
+  color: var(--ion-color-primary);
+  font-weight: 400;
+  font-size: 22px;
+  text-align: start;
+  padding: 0 12px;
+  height: auto;
+  transform-origin: left top;
+  bottom: auto;
+  align-items: flex-start;
+}
+
+.data-limite {
+  text-align: center;
+  width: 100%;
+}
+
+.buttons-row {
+  position: sticky;
+  bottom: 0;
+  background-color: white;
+  z-index: 1;
+}
+
+#alternativas {
+  min-height: 63vh !important;
+
+  .alternativaEscolhida {
+    background: var(--ion-color-primary-gradient);
+    color: var(--ion-color-primary-yellow);
+    ion-item,
+    ion-icon {
+      color: var(--ion-color-primary-yellow) !important; 
+    }
+  }
+
+  ion-slide {
+    border: solid 1px var(--ion-color-primary);
+    justify-content: flex-start;
+    flex-direction: column;
+    border-radius: 4px;
+    align-items: center;
+    overflow: hidden;
+    display: flex;
+
+    .tituloAlternativa {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      h4 {
+        flex: 1;
+      }
+      ion-button {
+        width: unset;
+        ion-icon {
+          color: var(--ion-color-primary);
+        }
+      }
+    }
+    .thumbnails {
+      ion-thumbnail {
+        border: solid 1px var(--ion-color-primary);
+        border-radius: 4px;
+        overflow: hidden;
+        margin: 3px;
+        transition: all 0.3s;
+        img{
+          height: 100%;
+        }
+      }
+      ion-thumbnail:first-child {
+        margin-left: -6px !important;
+      }
+      .selectedThumbnail {
+        border: solid 2px var(--ion-color-primary);
+      }
+    }
+
+    .slide-foto {
+      height: 150px !important;
+      width: 80vw !important;
+    }
+    .foto:active {
+      transition: all 0.3s;
+      transform: scale(0.9);
+    }
+    .imagem-ilustrativa {
+      text-align: end;
+      width: 100%;
+    }
+    .descricao {
+      text-align: start;
+      width: 100%;
+    }
+    .foto {
+      height: 100%;
+      width: 100%;
+      background-image: url("https://via.placeholder.com/107x194");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
+}
+
+ion-row {
+  justify-content: space-between;
+  padding: 0 15px;
+  ion-button {
+    transition: all 0.3s;
+    font-weight: 600;
+    font-size: 16px;
+    margin-top: 1vh;
+    height: 50px;
+    width: 45%;
+  }
+}
+
+ion-button:active {
+  transform: scale(0.9);
+}

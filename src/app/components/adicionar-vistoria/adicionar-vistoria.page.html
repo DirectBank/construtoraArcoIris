@@ -1,0 +1,52 @@
+<ion-item color="transparent">
+    <ion-label position="floating">Empreendimento</ion-label>
+    <ion-select #selectEmpreendimentos
+                [interfaceOptions]="customActionSheetOptions"
+                [(ngModel)]="novaVistoria.id_empreendimento"
+                (ionChange)="empreendimentoChange($event)"
+                interface="alert"
+                placeholder="Selecione um">
+        <ion-select-option *ngFor="let empreendimento of empreendimentos"
+                           [value]="empreendimento.id_empreendimento">{{empreendimento.nome}}</ion-select-option>
+
+    </ion-select>
+</ion-item>
+
+<ion-item color="transparent">
+    <ion-label position="floating">Cliente</ion-label>
+    <ion-select [interfaceOptions]="customActionSheetOptions"
+                [(ngModel)]="novaVistoria.id_cliente"
+                (ionChange)="clientesChange(selectEmpreendimentos.value,$event)"
+                interface="alert"
+                placeholder="Selecione um">
+        <ion-select-option *ngFor="let cliente of clientes"
+                           [value]="cliente.id_cliente">{{cliente.descricao}}</ion-select-option>
+
+    </ion-select>
+</ion-item>
+
+<ion-item color="transparent">
+    <ion-label position="floating">Contrato</ion-label>
+    <ion-select [interfaceOptions]="customActionSheetOptions"
+                [(ngModel)]="novaVistoria.id_contrato"
+                interface="alert"
+                placeholder="Selecione um">
+        <ion-select-option *ngFor="let contrato of contratos"
+                           [value]="contrato.id_contrato">{{contrato.descricao}}</ion-select-option>
+
+    </ion-select>
+</ion-item>
+
+<ion-item color="transparent"
+          lines="none">
+    <ion-button type="submit"
+                expand="block"
+                color="primary"
+                (click)="cadastrar()"
+                class="btn-login">Confirmar</ion-button>
+</ion-item>
+
+<ion-button id="esqueci"
+            fill="clear"
+            (click)="fechar()"
+            expand="block">Cancelar</ion-button>

@@ -1,0 +1,76 @@
+<ion-header mode="ios"
+            translucent="true">
+  <ion-toolbar> 
+    <ion-buttons collapse="true"
+                 slot="start">
+      <ion-back-button defaultHref="tabs"
+                       text=""
+                       icon="arrow-back-outline"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons collapse="true"
+                 slot="end">
+      <ion-button (click)="navTo('meus-dados')">
+        <p> {{userService.getUsuario().nomeCliente | titlecase }} &nbsp;</p>
+        <ion-icon src="assets/icons/profile.svg"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>2ª via de boleto
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content mode="ios"
+             [fullscreen]="true">
+  <ion-header mode="ios"
+              collapse="condense">
+    <ion-toolbar>
+      <ion-buttons collapse="true"
+                   slot="start">
+        <ion-back-button defaultHref="tabs"
+                         text=""
+                         icon="arrow-back-outline"></ion-back-button>
+
+      </ion-buttons>
+      <ion-buttons collapse="true"
+                   slot="end">
+        <ion-button (click)="navTo('meus-dados')"> {{this.userService.getUsuario().nomeCliente | titlecase }} &nbsp;
+          <ion-icon src="assets/icons/profile.svg"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+    <ion-toolbar>
+      <ion-title size="large">Informe de IR</ion-title>
+    </ion-toolbar>
+    <!-- <ion-toolbar>
+      <ion-title size="medium">{{this.userService.getUsuario().complemento | titlecase}}</ion-title>
+    </ion-toolbar> -->
+  </ion-header>
+
+  <mat-accordion>
+    <mat-expansion-panel class="styled-panel" *ngFor="let info of infos" class="infos">
+      <mat-expansion-panel-header>
+        <!-- <div class="teste"> -->
+          <p>{{info[0].empreendimento}}</p>
+          <p>Unidade</p>
+          <h3>{{info[0].unidade}}</h3>
+          <div class="infos-header">
+            <div>
+              <p class="description">Total de meses:</p>
+              <p class="value">{{info.length}} meses</p>
+            </div>
+            <div>
+              <p class="description">Valor total:</p>
+              <p class="value">{{somaTotal(info) | currency:'R$'}}</p>
+            </div>
+          </div>
+        <!-- </div> -->
+      </mat-expansion-panel-header>
+      <p *ngFor="let rendimento of info"
+          class="rendimentos">
+        <span><b>{{rendimento.nomeMes}}</b></span>
+        <span>{{rendimento.valorPago | currency:'R$'}}</span>
+      </p>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+</ion-content>

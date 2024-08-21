@@ -1,0 +1,46 @@
+<ion-header>
+     <div>
+          <ion-button fill="clear" (click)="fechar()"><ion-icon name="arrow-back-outline"></ion-icon></ion-button>
+     </div>
+     <div>
+          <ion-icon name="menu-outline"></ion-icon>
+     </div>
+</ion-header>
+<ion-content>
+
+    <div class="foto"
+         *ngIf="!listaImagens">
+        <img [id]="'preloader_1'"
+             class="preloader"
+             src="assets/svg/logo_ompplus_pre_loading.svg">
+        <pinch-zoom backgroundColor="rgba(0,0,0,0)"
+                    style="height: 100%;">
+            <img class="capa"
+                 (load)="preloaderTransition(1)"
+                 [id]="'capa_1'"
+                 [src]="imagem">
+        </pinch-zoom>
+    </div>
+
+    <ion-slides #slides
+                style="height:90%"
+                pager="true"
+                [options]="slideOpts"
+                *ngIf="listaImagens"
+                zoom>
+        <ion-slide *ngFor="let img of listaImagens"
+                   style="width: auto!important;">
+
+            <img [id]="'preloader_1'"
+                 class="preloader"
+                 [src]="img">
+            <!-- <pinch-zoom backgroundColor="rgba(0,0,0,0)"
+                            style="height: 100%;">
+                    <img class="capa"
+                    [id]="'capa_1'"
+                    [src]="img">
+                </pinch-zoom> -->
+        </ion-slide>
+    </ion-slides>
+
+</ion-content>

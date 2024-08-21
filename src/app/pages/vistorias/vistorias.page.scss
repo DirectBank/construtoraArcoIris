@@ -1,0 +1,136 @@
+ion-title.title-large {
+  color: var(--ion-color-primary);
+  font-weight: bolder;
+  font-size: 22px;
+  padding: 0 10px;
+  height: auto;
+  transform-origin: left top;
+  bottom: auto;
+  align-items: flex-start;
+}
+ion-title.title-medium {
+  color: var(--ion-color-primary);
+  font-weight: 400;
+  font-size: 22px;
+  text-align: start;
+  padding: 0 12px;
+  height: auto;
+  transform-origin: left top;
+  bottom: auto;
+  align-items: flex-start;
+}
+ion-card.vencido {
+  --background: linear-gradient(107deg, var(--ion-color-primary) 20%, var(--ion-color-danger) 90%);
+  ion-card-title {
+    color: var(--ion-color-danger) !important;
+  }
+}
+
+
+.filtroVistoria{
+  width: 100%;
+  padding: 2px;
+  ion-label{
+    flex: 20 0 0%;
+    max-width: 20%;
+    padding: 14px 4px;
+    margin: 0;
+    font-size: 16px;
+  }
+  ion-select{
+    width: 80%;
+    max-width: 80%;
+    padding: 14px 14px 14px 0px;
+    margin: 0;
+    font-size: 16px;
+  }
+}
+
+
+ion-card {
+  --background: var(--ion-color-primary-gradient);
+  color: var(--ion-color-primary-yellow);
+  border-radius: 10px;
+  ion-card-header {
+    padding-bottom: 5px;
+    ion-card-title,
+    ion-card-subtitle {
+      color: var(--ion-color-primary-yellow);
+      span {
+        font-weight: 200;
+        vertical-align: top;
+        color: var(--ion-color-primary-yellow);
+      }
+    }
+    ion-card-title {
+      font-size: 22px;
+      font-weight: bold;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    ion-card-subtitle {
+      font-size: 12px;
+      font-weight: lighter;
+    }
+  }
+  ion-card-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    ion-button {
+      font-weight: 200;
+    }
+    ion-button:active {
+      transform: scale(0.9);
+    }
+  }
+}
+ion-card:active {
+  transform: scale(0.9);
+}
+
+.condensed-title {
+  max-width: 100%;
+  font-size: 20px;
+  margin: 0;
+  margin-left: 10px;
+  font-weight: 700;
+}
+
+.contAddButton{
+  width: 100%;
+  padding: 0 4%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+ 
+.add-button{ 
+  align-items: center;
+  display: flex;
+  height: 60px;
+  
+  ion-icon {
+    position: absolute;
+  }
+  p{
+    margin: 0;
+    padding-left: 22px;
+    padding-right: 5px;
+    margin-left: 8px;
+    //margin-top: 1px;
+    color: var(--ion-color-primary);
+    border: 2px var(--ion-color-primary) solid;
+    border-radius: 10px;
+    padding-bottom: 1px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+}
+.add-button:hover {
+  opacity: 0.3;
+}

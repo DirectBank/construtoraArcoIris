@@ -1,0 +1,19 @@
+<ion-app>
+  <ion-router-outlet *ngIf="!this.showUpdate"></ion-router-outlet>
+  <ion-content *ngIf="this.showUpdate">
+    <div class="grid">
+
+      <div class="item" *ngFor="let ic of this.arrayDummy;let i=index">
+        <div class="item-icone" id="icon">
+          <img class="preloader" width="60" height="60" src="">
+        </div>
+      </div>
+    </div>
+    <div class="progresso">
+      <p>Estamos carregando algumas informações, por favor, aguarde.</p>
+      <div class="barra" [style.width]="this.progressUpdate + '%'">
+      </div>
+      <p> {{this.progressUpdate}} % </p>
+    </div>
+  </ion-content>
+</ion-app>

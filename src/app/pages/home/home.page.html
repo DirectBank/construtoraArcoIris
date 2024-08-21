@@ -1,0 +1,226 @@
+<ion-header mode="ios"
+            translucent="true">
+  <ion-toolbar>
+    <ion-buttons collapse="true"
+                   slot="start">
+        <ion-back-button defaultHref="tabs"
+                         text=""
+                         icon="arrow-back-outline"></ion-back-button>
+      </ion-buttons>
+    <ion-buttons collapse="true"
+                 slot="end">
+      <ion-button (click)="navTo('meus-dados')">
+        <p> {{this.userService.getUsuario().nomeCliente | titlecase }} &nbsp;</p>
+        <ion-icon src="assets/icons/profile.svg"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Home</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content mode="ios"
+             [fullscreen]="true">
+  <ion-header mode="ios"
+              collapse="condense">
+    <ion-toolbar>
+      <ion-buttons collapse="true"
+                   slot="start">
+        <ion-back-button defaultHref="tabs"
+                         text=""
+                         icon="arrow-back-outline"></ion-back-button>
+
+      </ion-buttons>
+      <ion-buttons collapse="true"
+                   slot="end">
+        <ion-button (click)="navTo('home/meus-dados')"> {{this.userService.getUsuario().nomeCliente | titlecase }}
+          &nbsp;
+          <ion-icon src="assets/icons/profile.svg"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+    <ion-toolbar>
+      <ion-title size="large">Bem vindo! </ion-title>
+    </ion-toolbar>
+    <ion-toolbar>
+      <ion-title size="medium">{{this.userService.getUsuario().nomeCliente | titlecase }} </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-list>
+    <ion-card [routerLink]="'/tabs/tab3'">
+      <ion-card-header>
+        <ion-card-title>{{this.userService.getUsuario().nomeEmpreendimento | titlecase }}</ion-card-title>
+        <ion-card-subtitle>{{this.userService.getUsuario().complemento | uppercase}}</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        <div class="endereco">
+          <p class="endLinha1">{{this.userService.getUsuario().endereco | titlecase }}, n° {{userService.getUsuario().numero}}</p>
+          <p class="endLinha2">{{this.userService.getUsuario().bairro | titlecase }} |
+            {{this.userService.getUsuario().cidade | titlecase }}</p>
+        </div>
+
+        <p> Andamento da obra {{this.userService.getUsuario().evolucao | number: '1.0-2'}}% </p>
+        <ion-item lines="none"
+                  color="transparent">
+          <ion-range min="0"
+                     disabled="true"
+                     max="100"
+                     [value]="this.userService.getUsuario().evolucao">
+          </ion-range>
+        </ion-item>
+        <div class="labelsProgresso">
+          <span class="inicio">0%</span>
+          <span class="fim">100%</span>
+        </div>
+        <p>Obra - início: {{this.userService.getUsuario().previsaoDataInicio}} - previsão:
+          {{this.userService.getUsuario().previsaoDataTermino}} </p>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+
+  <!-- <div class="quickAccess">
+    <ion-button (click)="quickAccess.slidePrev()">
+      <ion-icon slot="icon-only"
+                name="arrow-back"></ion-icon>
+    </ion-button>
+    <ion-slides #quickAccess
+                [options]="slideOpts">
+      <ion-slide (click)="navTo('documentos','projetos')">
+        <div>
+          <ion-icon src="assets/icons/documentos.svg">
+          </ion-icon>
+          <p>Projetos</p>
+        </div>
+      </ion-slide>
+      <ion-slide routerLink="documentos">
+        <div>
+          <ion-icon src="assets/icons/documentos.svg">
+          </ion-icon>
+          <p>Documentos</p>
+        </div>
+      </ion-slide>
+      <ion-slide routerLink="comunicados">
+        <div>
+          <ion-icon src="assets/icons/comunicados.svg">
+          </ion-icon>
+          <p>Comunicados</p>
+        </div>
+      </ion-slide>
+      <ion-slide (click)="navVistoria()">
+        <div>
+          <ion-icon src="assets/icons/vistoria.svg">
+          </ion-icon>
+          <p>Vistoria</p>
+        </div>
+      </ion-slide>
+      <ion-slide routerLink="grupos-personalizacoes">
+        <div>
+          <ion-icon src="assets/icons/personalizacoes.svg">
+          </ion-icon>
+          <p>Personalizações</p>
+        </div>
+      </ion-slide> 
+      <ion-slide routerLink="boletos">
+        <div>
+          <ion-icon src="assets/icons/boleto.svg">
+          </ion-icon>
+          <p>Boletos</p>
+        </div>
+      </ion-slide>
+    </ion-slides>
+    <ion-button (click)="quickAccess.slideNext()">
+      <ion-icon slot="icon-only"
+                name="arrow-forward"></ion-icon>
+    </ion-button>
+  </div> -->
+
+  <div class="quickAccess-new">
+      <div (click)="navTo('documentos','projetos')">
+          <ion-icon src="assets/icons/documentos.svg">
+          </ion-icon>
+          <p>Projetos</p>
+      </div>
+      <div routerLink="documentos">
+          <ion-icon src="assets/icons/documentos.svg">
+          </ion-icon>
+          <p>Documentos</p>
+      </div>
+      <div routerLink="comunicados">
+          <ion-icon src="assets/icons/comunicados.svg">
+          </ion-icon>
+          <p>Comunicados</p>
+      </div>
+      <div (click)="navVistoria()">
+          <ion-icon src="assets/icons/vistoria.svg">
+          </ion-icon>
+          <p>Vistoria</p>
+      </div>
+      <div routerLink="grupos-personalizacoes">
+          <ion-icon src="assets/icons/personalizacoes.svg">
+          </ion-icon>
+          <p>Personalizações</p>
+      </div> 
+      <div routerLink="boletos">
+          <ion-icon src="assets/icons/boleto.svg">
+          </ion-icon>
+          <p>Boletos</p>
+      </div>
+  </div>
+  
+  <!-- <ion-slides #quickAccess
+              class="styled-slider"
+                [options]="slideOpts">
+      <ion-slide routerLink="comunicados">
+        <ion-icon src="assets/icons/comunicados.svg">
+        </ion-icon>
+        <p>Comunicados</p>
+      </ion-slide>
+      <ion-slide routerLink="grupos-personalizacoes">
+        <ion-icon src="assets/icons/personalizacoes.svg">
+        </ion-icon>
+        <p>Personalizações</p>
+      </ion-slide> 
+      <ion-slide routerLink="boletos">
+        <ion-icon src="assets/icons/boleto.svg">
+        </ion-icon>
+        <p>Boletos</p>
+      </ion-slide>
+      <ion-slide routerLink="documentos">
+        <ion-icon src="assets/icons/documentos.svg">
+        </ion-icon>
+        <p>Documentos</p>
+      </ion-slide>
+    </ion-slides> -->
+
+    <h3 *ngIf="galeriaNew.length > 0">Ilustrações</h3>
+    <ion-slides #galeriaSlider *ngIf="galeriaNew.length > 0" pager="true" class="new-galeria">
+      <ion-slide *ngFor="let img of galeriaNew; let i = index">
+        <ion-skeleton-text animated="true" style="height: 400px; width: 100%;" *ngIf="img.loading else imgLoaded"></ion-skeleton-text>
+        <ng-template #imgLoaded>
+          <div [style.backgroundImage]="'url('+img.urlArquivo+')'" class="new-img-galeria"
+            (click)="abreImagem(img.teste,true,i)"></div>
+        </ng-template>
+      </ion-slide>
+    </ion-slides>
+
+  <!-- <h3 *ngIf="galeria.length > 0">Galeria</h3>
+  <div *ngFor="let ano of galeria;let i=index">
+    <div class="galeria">
+      <h2>{{ano[0].mesano}}</h2>
+      <div class="fotos">
+        <div *ngFor="let item of ano;let j=index">
+          <ion-skeleton-text animated="true" class="foto-loading" *ngIf="item.loading else loaded"></ion-skeleton-text>
+          <ng-template #loaded>
+            <div
+            (click)="abreImagem(item.teste,true,j,i)"
+            class="foto"
+            [style.backgroundImage]="'url('+item.urlArquivo+')'"></div>
+          </ng-template>
+          
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+</ion-content>

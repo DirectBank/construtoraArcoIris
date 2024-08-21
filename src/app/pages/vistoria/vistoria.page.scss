@@ -1,0 +1,229 @@
+ion-title.title-large {
+  color: var(--ion-color-primary);
+  font-weight: bolder;
+  font-size: 22px;
+  padding: 0 10px;
+  height: auto;
+  transform-origin: left top;
+  bottom: auto;
+  align-items: flex-start;
+}
+ion-title.title-medium {
+  color: var(--ion-color-primary);
+  font-weight: 400;
+  font-size: 22px;
+  text-align: start;
+  padding: 0 12px;
+  height: auto;
+  transform-origin: left top;
+  bottom: auto;
+  align-items: flex-start;
+}
+
+
+.list-ios{
+  margin: 10px;
+  border-radius: 10px;
+}
+
+ion-item {
+  --padding-start: 15px;
+  --padding-end: 15px;
+  --padding-top: 15px;
+  --padding-bottom: 15px;
+  --background: #f1f1f1;
+
+  h4 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 400;
+  }
+  p {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 400;
+  }
+  ion-icon{
+    margin-inline: 0px 15px;
+    font-size: 25px;
+  }
+  ion-label {
+    font-size: 18px;
+    font-weight: 500;
+  }
+  ion-textarea {
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid var(--ion-color-primary);
+    --placeholder-font-weight: 500;
+  }
+}
+
+ion-row {
+  justify-content: space-between;
+  padding: 0 15px;
+  
+  .thumbnails {
+    justify-content: unset;
+    padding-left: 0px;
+    & :first-child {
+      margin-left: 0;
+    }
+    ion-thumbnail {
+      border: solid 1px var(--ion-color-primary);
+      background-position: center;
+      background-size: cover;
+      transition: all 0.3s;
+      position: relative;
+      border-radius: 4px;
+      overflow: visible;
+      height: 80px;
+      margin: 3px;
+      width: 80px;
+      img {
+        height: 100%;
+      }
+      ion-icon {
+        background-color: var(--ion-color-primary-yellow);
+        border-radius: 50%;
+        position: absolute;
+        right: -10px;
+        top: -10px;
+        z-index: 1;
+      }
+    }
+    ion-thumbnail:active {
+      transform: scale(0.9);
+    }
+    ion-thumbnail:first-child {
+      div {
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 55px;
+        color: var(--ion-color-primary);
+      }
+    }
+  }
+  ion-button {
+    transition: all 0.3s;
+    font-weight: 600;
+    font-size: 16px;
+    margin-top: 1vh;
+    height: 50px;
+    width: 45%;
+  }
+}
+
+
+.buttons {
+  // position: sticky;
+  bottom: 0;
+  z-index: 1;
+  background-color: var(--ion-color-primary-yellow);
+
+  ion-button:active {
+    transform: scale(0.9);
+  }
+}
+
+.div-signature {
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  position: absolute;
+  background-color: var(--ion-color-screen-background);
+  z-index: 10;
+}
+
+.debug {
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+
+  width: 85vh;
+  height: 10%;
+  
+  position: absolute;
+  // top: 43.5%;
+  // right: 0%;
+  // bottom: 0%;
+
+  height: 100%;
+  position: absolute;
+  // padding-top: 143%;
+  div{
+    width: 100%;
+    margin-top: 104%;
+    // margin-top: 182vw;
+  }
+  
+  background-color: var(--ion-color-screen-background);
+  ion-button {
+    width: 49%;
+  }
+}
+
+
+.condensed-title {
+  max-width: 100%;
+  font-size: 20px;
+  margin: 0;
+  margin-left: 10px;
+  font-weight: 700;
+}
+
+.success {
+  fill: var(--ion-color-success);
+}
+
+.warning {
+  fill: var(--ion-color-warning);
+  opacity: 0.5;
+  // fill: #b5b5b5;
+}
+
+.danger {
+  fill: var(--ion-color-danger);
+  opacity: 0.5;
+  // fill: #b5b5b5;
+}
+
+
+.div-signature-img{
+  height: 140px;
+
+  margin: 10px;
+  padding: 15px;
+  border-radius: 10px;
+  // background: #f1f1f1;
+
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: space-between;
+  justify-content: flex-start;
+
+  p {
+    width: 35%;
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  .assinatura{
+    transform: rotate(-90deg);
+    width: 30%;
+    height: auto;
+    margin: 0%;
+    position: relative;
+    left: 14%;
+    // border-radius: 4px;
+    //border: 1px solid var(--ion-color-primary);
+  }
+}

@@ -1,0 +1,81 @@
+<ion-content>
+
+    <div class="topoMenu"
+         (click)="fechar()">
+        <p>menu</p>
+        <ion-icon name="chevron-down"></ion-icon>
+    </div>
+
+    <ion-list>
+        <ion-item lines="none"
+                  (click)="navTo('documentos')">
+            <ion-icon slot="start"
+                      src="assets/icons/documentos.svg"></ion-icon>
+            <ion-label>Documentos</ion-label>
+        </ion-item>
+        <ion-item lines="none"
+                  (click)="navTo('boletos')">
+            <ion-icon slot="start"
+                      src="assets/icons/boletos.svg"></ion-icon>
+            <ion-label>Boletos</ion-label>
+        </ion-item>
+        <ion-item lines="none"
+                  (click)="navTo('info-rendimento')">
+            <ion-icon slot="start"
+                      src="assets/icons/info-rendimentos.svg"></ion-icon>
+            <ion-label>Informe IR</ion-label>
+        </ion-item>
+        <ion-item lines="none"
+                  (click)="navTo('agendamentos')">
+            <ion-icon slot="start"
+                      src="assets/icons/agendamentos.svg"></ion-icon>
+            <ion-label>Agendamentos</ion-label>
+        </ion-item>
+        <!-- <ion-item lines="none"
+                  (click)="navTo('obras')">
+            <ion-icon slot="start"
+                      src="assets/icons/obras.svg"></ion-icon>
+            <ion-label>Obras</ion-label>
+        </ion-item> -->
+        <ion-item lines="none"
+                  (click)="navTo('relatorios')">
+            <ion-icon slot="start"
+                      src="assets/icons/relatorios.svg"></ion-icon>
+            <ion-label>Relatórios</ion-label>
+        </ion-item>
+        <ion-item lines="none"
+                  (click)="navTo('grupos-personalizacoes')">
+            <ion-icon slot="start"
+                      src="assets/icons/personalizacoes.svg"></ion-icon>
+            <ion-label>Personalizações</ion-label>
+        </ion-item>
+        <ion-item lines="none"
+                  (click)="navTo('comunicados')">
+            <ion-icon slot="start"
+                      src="assets/icons/comunicados.svg"></ion-icon>
+            <ion-label>Comunicados</ion-label>
+        </ion-item>
+        <ion-item lines="none"
+                  (click)="navTo('fale-conosco')">
+            <ion-icon slot="start"
+                      src="assets/icons/faleconosco.svg"></ion-icon>
+            <ion-label>Fale Conosco</ion-label>
+        </ion-item>
+    </ion-list>
+
+    <ion-list class="bottomList">
+        <ion-item lines="none"
+                  (click)="openSettings()">
+            <ion-icon slot="start"
+                      src="assets/icons/config.svg"></ion-icon>
+            <ion-label>Configurações</ion-label>
+        </ion-item>
+        <ion-item lines="none"
+                  (click)="sair()">
+            <ion-icon slot="start"
+                      src="assets/icons/logout.svg"></ion-icon>
+            <ion-label>Sair</ion-label>
+        </ion-item>
+    </ion-list>
+
+</ion-content>

@@ -1,0 +1,92 @@
+<ion-header mode="ios"
+            translucent="true">
+  <ion-toolbar>
+    <ion-buttons collapse="true"
+                 slot="start">
+      <ion-back-button defaultHref="tabs"
+                       text=""
+                       icon="arrow-back-outline"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons collapse="true"
+                 slot="end">
+      <ion-button (click)="navTo('meus-dados')">
+        <p> {{this.userService.getUsuario().nomeCliente | titlecase }} &nbsp;</p>
+        <ion-icon src="assets/icons/profile.svg"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Comunicados</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content mode="ios"
+             [fullscreen]="true">
+  <ion-header mode="ios"
+              collapse="condense">
+    <ion-toolbar>
+      <ion-buttons collapse="true"
+                   slot="start">
+        <ion-back-button defaultHref="tabs"
+                         text=""
+                         icon="arrow-back-outline"></ion-back-button>
+
+      </ion-buttons>
+      <ion-buttons collapse="true"
+                   slot="end">
+        <ion-button (click)="navTo('meus-dados')"> {{this.userService.getUsuario().nomeCliente | titlecase }} &nbsp;
+          <ion-icon src="assets/icons/profile.svg"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+    <ion-toolbar>
+      <ion-title size="large">Comunicados </ion-title>
+    </ion-toolbar>
+    <ion-toolbar>
+      <ion-title size="medium">{{this.userService.getUsuario().complemento | titlecase}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-item-sliding *ngIf="comunicados?.length==0">
+    <ion-item lines="full">
+      <ion-label>
+        <div>
+          <p>
+            Nanhum comunicado encontrado
+          </p>
+        </div>
+      </ion-label>
+    </ion-item>
+
+  </ion-item-sliding>
+
+  <ion-list *ngFor="let item of comunicados;let i=index;">
+
+    <ion-item-sliding [class.lido]="item.visualizado"
+                      (click)="openComunicado(item)">
+      <ion-item lines="full"
+                [class.lido]="item.visualizado">
+
+        <ion-label>
+          <span class="date">
+            <ion-icon name="ellipse"></ion-icon> {{item.dataCadastro | date:'dd/MM/yyyy'}}
+          </span>
+          <h2>{{item.titulo | titlecase}}</h2>
+          <div>
+            <p>
+              {{item.mensagemEmail | lowercase}}
+            </p>
+          </div>
+        </ion-label>
+      </ion-item>
+
+      <ion-item-options side="end"
+                        *ngIf="!item.visualizado">
+        <ion-item-option color="primary"
+                         (click)="marcarComoLida(item.id_comunicado,$event)">
+          Marcar como {{item.visualizado?'não':''}} lida
+        </ion-item-option>
+
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+</ion-content>

@@ -1,0 +1,414 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import "~@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+//CSS calendar
+// @import "../node_modules/angular-calendar/css/angular-calendar.css";
+@import "../../../node_modules/angular-calendar//css/angular-calendar.css";
+
+@font-face {
+  font-family: "Montserrat";
+  font-weight: 100 1000;
+  font-style: normal;
+  src: url("./assets/font/Montserrat-VariableFont_wght.ttf");
+}
+@font-face {
+  font-family: "Montserrat";
+  font-weight: 100 1000;
+  font-style: italic;
+  src: url("./assets/font/Montserrat-Italic-VariableFont_wght.ttf");
+}
+
+* {
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+}
+
+ion-icon {
+  font-size: 18px;
+}
+
+ion-button:focus {
+  outline: none;
+}
+
+.custom-loader {
+  --background: transparent;
+  .loading-wrapper {
+    background-image: url("assets/svg/logo_ompplus_loading.svg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    min-width: 90vw;
+    min-height: 90vw;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+  }
+}
+
+.lista-convidados {
+  .alert-wrapper {
+    max-height: 60vh;
+    overflow: scroll;
+  }
+}
+
+.custom-modal-img-viewer .modal-wrapper {
+  height: 45%;
+  width: 90vw;
+  position: absolute;
+  display: block;
+  border-radius: 20px;
+}
+
+.custom-modal .modal-wrapper {
+  height: 90vw;
+  width: 90vw;
+  position: absolute;
+  display: block;
+  border-radius: 10px;
+}
+
+.custom-modal-avaliacao .modal-wrapper {
+  height: 240px;
+  width: 80vw;
+  position: absolute;
+  display: block;
+  border-radius: 12px;
+  padding: 5%;
+  border: 1px solid var(--ion-color-primary);
+  // overflow:hidden;
+}
+.custom-modal-lgpd .modal-wrapper {
+  height: 95%;
+  width: 100%;
+  position: absolute;
+  display: block;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  bottom: 0;
+  padding: 5%;
+}
+
+.custom-toast {
+  --color: var(--ion-color-primary);
+  font-weight: bolder;
+  --border-radius: 10px;
+  --background: var(--ion-color-primary-yellow);
+}
+
+.my-custom-menu .modal-wrapper {
+  height: 80%;
+  width: 100%;
+  position: absolute;
+  display: block;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  bottom: 0;
+  padding: 5%;
+}
+.my-custom-change-password .modal-wrapper {
+  height: 50%;
+  width: 100%;
+  position: absolute;
+  display: block;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  bottom: 0;
+  padding: 5%;
+}
+.my-custom-agendamento .modal-wrapper {
+  height: 60%;
+  width: 100%;
+  position: absolute;
+  display: block;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  bottom: 0;
+  padding: 5%;
+}
+.my-custom-vistoria .modal-wrapper {
+  height: 60%;
+  width: 100%;
+  position: absolute;
+  display: block;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  bottom: 0;
+  padding: 5%;
+}
+.my-custom-password .modal-wrapper {
+  height: 30%;
+  width: 100%;
+  position: absolute;
+  display: block;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  bottom: 0;
+  padding: 5%;
+}
+.my-custom-settings .modal-wrapper {
+  height: 70%;
+  width: 100%;
+  position: absolute;
+  display: block;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  bottom: 0;
+  padding: 5%;
+}
+
+.custom-alert {
+  ion-backdrop {
+    background: #000;
+  }
+  h2 {
+    white-space: break-spaces;
+  }
+}
+
+.fail-custom-alert {
+  ion-backdrop {
+    background: #000;
+  }
+  .alert-wrapper {
+    .alert-head {
+      border-bottom: solid 5px var(--ion-color-danger);
+    }
+  }
+}
+.success-custom-alert {
+  ion-backdrop {
+    background: #000;
+  }
+  .alert-wrapper {
+    .alert-head {
+      border-bottom: solid 5px var(--ion-color-success);
+    }
+  }
+}
+.standard-custom-alert {
+  ion-backdrop {
+    background: #000;
+  }
+  .alert-wrapper {
+    .alert-head {
+      border-bottom: solid 5px var(--ion-color-primary);
+    }
+  }
+}
+
+.alert-title {
+  color: var(--ion-color-primary);
+  text-align: center;
+  margin-left: 20px;
+  margin-bottom: 5vh;
+}
+
+.alert-sub-title {
+  font-weight: 100;
+  font-family: "Gotham-book";
+  // font-family: "DaxlinePro";
+  color: var(--ion-color-danger);
+  text-align: center;
+}
+
+signature-pad {
+  position: absolute;
+  bottom: 10%;
+  z-index: 999;
+  margin: 0px;
+  width: 100vw;
+  height: 83vh;
+  border: dashed 2px var(--ion-color-primary);
+  border-radius: 10px;
+  background-color: #fff;
+}
+
+.custom-ion-option {
+  div > div.alert-radio-label.sc-ion-alert-ios,
+  div > div.alert-radio-label.sc-ion-alert-md {
+    white-space: pre-line;
+  }
+  .alert-tappable.sc-ion-alert-ios,
+  .alert-tappable.sc-ion-alert-md {
+    position: relative;
+    height: 65px;
+    overflow: hidden;
+  }
+  .picker-opt.picker-opt-selected {
+    color: var(--ion-color-primary) !important;
+    font-size: 20px !important;
+    font-weight: bolder !important;
+  }
+}
+.page-header.has-forms {
+  height: 136.2px !important;
+}
+.page-header {
+  background-color: var(--ion-color-primary);
+  justify-content: center;
+  padding: 10vh 5% 0 5%;
+  align-items: center;
+  flex-direction: row;
+  transition: all 0.5s;
+  display: flex;
+  z-index: 10;
+  height: 20vh;
+  width: 100%;
+  h2 {
+    white-space: pre-line;
+    overflow: hidden;
+    text-align: end;
+    color: white;
+    margin: 3px 0;
+    flex: 1;
+  }
+  #btn-voltar {
+    --box-shadow: none;
+    --padding-start: 0;
+    padding: 5px 0;
+    zoom: 1.2;
+  }
+
+  .item-menu {
+    box-shadow: 1px 2px 10px -7px black;
+    background-color: var(--ion-color-primary-yellow);
+    justify-content: center;
+    margin: 1vh 0 1vh 1vh;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 8px;
+    position: relative;
+    display: flex;
+    height: 25vw;
+    width: 25vw;
+    z-index: 20;
+    h3 {
+      color: var(--ion-color-primary);
+      font-size: 100%;
+      text-align: end;
+      margin: 0;
+    }
+    .item-menu-icone {
+      :nth-child(2) {
+        background-color: var(--ion-color-primary);
+        border: 2px solid var(--ion-color-primary);
+        border-radius: 50%;
+        position: absolute;
+        padding: 4px;
+        bottom: 15%;
+        right: 10%;
+      }
+    }
+  }
+}
+div.modal-wrapper.ion-overlay-wrapper.sc-ion-modal-ios {
+  z-index: 999 !important;
+}
+.modal-wrapper.sc-ion-modal-ios,
+.modal-shadow.sc-ion-modal-ios {
+  z-index: 0 !important;
+}
+
+.button-solid {
+  --background-activated: var(--ion-color-primary, #9c2526);
+}
+
+ion-segment {
+  margin-top: 3vh;
+  --border: 1px solid var(--ion-color-primary);
+  background-color: #ffffff;
+  ion-segment-button {
+    padding: 12px 0;
+    ion-label {
+      --color-checked: var(--ion-color-light);
+    }
+  }
+  .segment-button-checked {
+    --background-checked: var(--ion-color-primary);
+    --indicator-color: var(--ion-color-primary);
+    color: #fff;
+  }
+  ion-segment-button {
+    color: var(--ion-color-primary);
+    // --background: var(--ion-color-white);
+    width: 33%;
+  }
+}
+//retira o '()' das estrela de avaliacao
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.action-sheet-button-inner.sc-ion-action-sheet-ios {
+  display: flex;
+  position: relative;
+  flex-flow: row nowrap;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: space-between;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  // word-spacing: 140px;
+  justify-content: left;
+}
+
+ion-button.button-block:active {
+  transform: scale(0.9);
+}
+
+ion-button {
+  p {
+    max-width: 25vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+ion-toolbar {
+  --min-height: 30px;
+  padding: 5px;
+  ion-back-button {
+    width: 40px;
+  }
+}
+
+.header-ios ion-toolbar:last-of-type {
+  --border-width: 0 0;
+}
+
+
+.remove-mat-expansion-panel-padding .mat-expansion-panel-content .mat-expansion-panel-body{
+  padding: 0 !important;
+}

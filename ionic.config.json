@@ -1,0 +1,7 @@
+{
+  "name": "omp-plus",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

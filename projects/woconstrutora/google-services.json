@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "971381581234",
+    "project_id": "wo-construtora",
+    "storage_bucket": "wo-construtora.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:971381581234:android:6ec201db8d94b86a41f0ab",
+        "android_client_info": {
+          "package_name": "br.com.woconstrutora.woconstrutora"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "971381581234-1kdlj872osu6bk08ubsguapt8u6jf1m2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxErS1B3HHDHmmKLOIMYMVxVIj2TDCS9E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "971381581234-1kdlj872osu6bk08ubsguapt8u6jf1m2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "971381581234-9j45hf6b1fbn6l9mfv1u3e8gigajcnod.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "br.com.woconstrutora.woconstrutora",
+                "app_store_id": "1631837103"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

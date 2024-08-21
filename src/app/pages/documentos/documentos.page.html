@@ -1,0 +1,82 @@
+<ion-header mode="ios"
+            translucent="true">
+  <ion-toolbar>
+    <ion-buttons collapse="true"
+                   slot="start">
+        <ion-back-button defaultHref="tabs"
+                         text=""
+                         icon="arrow-back-outline"></ion-back-button>
+      </ion-buttons>
+    <ion-buttons collapse="true"
+                 slot="end">
+      <ion-button (click)="navTo('meus-dados')">
+        <p> {{this.userService.getUsuario().nomeCliente | titlecase }} &nbsp;</p>
+        <ion-icon src="assets/icons/profile.svg"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Documentos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content mode="ios"
+             [fullscreen]="true">
+  <ion-header mode="ios"
+              collapse="condense">
+    <ion-toolbar>
+      <ion-buttons collapse="true"
+                   slot="start">
+        <ion-back-button defaultHref="tabs"
+                         text=""
+                         icon="arrow-back-outline"></ion-back-button>
+
+      </ion-buttons>
+      <ion-buttons collapse="true"
+                   slot="end">
+        <ion-button (click)="navTo('meus-dados')"> {{this.userService.getUsuario().nomeCliente | titlecase }} &nbsp;
+          <ion-icon src="assets/icons/profile.svg"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+    <ion-toolbar>
+      <ion-title size="large">{{tipoDocumento == 'projetos' ? 'Projetos' : 'Documentos'}} </ion-title>
+    </ion-toolbar>
+    <ion-toolbar>
+      <ion-title size="medium">{{this.userService.getUsuario().complemento | titlecase}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-------------------------------- FOR DOS DOCUMENTOS  --------------------->
+  <mat-accordion>
+    <mat-expansion-panel *ngFor="let teste of documentos;let i=index;" class="remove-mat-expansion-panel-padding">
+      <mat-expansion-panel-header>
+        <h2>{{teste[0].tipoDocumento}}</h2>
+      </mat-expansion-panel-header>
+        <ion-row class="documentos">
+          <ion-col  *ngFor="let documento of teste;let i=index;" size="4" 
+            (click)="downloadDocumento(documento)" colo="primary">
+            <ion-icon class="icon-documento" [src]="'assets/icons/'+ documento.extensao +'.svg'"></ion-icon>
+            <h4>{{documento.descricaoArquivo | titlecase}}</h4>
+              <p class="fileSize">
+                <ion-icon size="small" name="cloud-download-outline"></ion-icon>
+                {{documento.tamanho/1024 | number:'1.2-2'}} kB
+              </p>
+          </ion-col>
+        </ion-row>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <ion-list>
+      <ion-item lines="full" *ngIf="documentos?.length < 0">
+        <ion-label>
+          <div>
+            <p>
+              Nenhum documento encontrado
+            </p>
+          </div>
+        </ion-label>
+      </ion-item>
+  </ion-list>
+
+
+
+</ion-content>

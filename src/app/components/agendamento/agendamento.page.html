@@ -1,0 +1,72 @@
+<ion-item color="transparent"
+          lines="none">
+    <h2>{{selectedDate | date:'dd/MM/yyy'}}</h2>
+</ion-item>
+
+<ion-item color="transparent">
+    <ion-label position="floating">Motivo da visita</ion-label>
+    <ion-select [interfaceOptions]="customActionSheetOptions"
+                [(ngModel)]="novoAgendamento.id_tipoVisita"
+                interface="action-sheet"
+                placeholder="Selecione um"
+                (ionChange)="changeTipoVisita($event)">
+        <ion-select-option *ngFor="let tipo of tiposAgendamento"
+                           [value]="tipo.id_tipoVisita">{{tipo.descricao}}</ion-select-option>
+
+    </ion-select>
+</ion-item>
+
+<ion-item color="transparent" *ngIf="!horaFixa">
+    <ion-label>Horário</ion-label>
+    <ion-datetime [(ngModel)]="novoAgendamento.horaAgendamento"
+                  displayFormat="HH:mm"
+                  [doneText]="'Ok'"
+                  [cancelText]="'Cancelar'"
+                  [disabled]="!novoAgendamento.id_tipoVisita"
+                  minuteValues="0,30"
+                  [pickerOptions]="pickerOptions"
+                  [hourValues]="horas"
+                  [min]="hora1"
+                  [max]="hora2"
+                  ></ion-datetime>
+                  <!-- [hourValues]="hourValues" -->
+                  <!-- (ionChange)="horariosVisitas($event)"> -->
+</ion-item>
+
+<ion-item color="transparent" *ngIf="horaFixa">
+    <ion-label>Horário</ion-label>
+    <ion-datetime [(ngModel)]="novoAgendamento.horaAgendamento"
+                  displayFormat="HH:mm"
+                    pickerFormat="HH:mm" 
+                  [doneText]="'Ok'"
+                  [cancelText]="'Cancelar'"
+                  [disabled]="!novoAgendamento.id_tipoVisita"
+                  [pickerOptions]="pickerOptions"
+                  [hourValues]="horas"
+                  minuteValues="0"
+                  ></ion-datetime>
+</ion-item>
+
+<!-- <ion-button (click)="openPicker()">Open</ion-button> -->
+
+<ion-item color="transparent">
+    <ion-label position="floating">Observações</ion-label>
+    <ion-textarea rows="6"
+                  cols="20"
+                  [(ngModel)]="novoAgendamento.motivo"
+                  placeholder="Notas adicionais"></ion-textarea>
+</ion-item>
+
+<ion-item color="transparent"
+          lines="none">
+    <ion-button type="submit"
+                expand="block"
+                color="primary"
+                (click)="cadastrar()"
+                class="btn-login">Confirmar</ion-button>
+</ion-item>
+
+<ion-button id="esqueci"
+            fill="clear"
+            (click)="fechar()"
+            expand="block">Cancelar</ion-button>

@@ -1,0 +1,162 @@
+<ion-header mode="ios"
+            translucent="true">
+  <ion-toolbar>
+    <ion-buttons collapse="true"
+                 (click)="this.navCtrl.back()"
+                 slot="start">
+      <ion-icon src="assets/icons/back.svg"
+                style="max-width:18px;"
+                slot="icon-only"></ion-icon>
+    </ion-buttons>
+    <ion-buttons collapse="true"
+                 slot="end">
+      <ion-button (click)="navTo('meus-dados')">
+        <p> {{this.userService.getUsuario().nomeCliente | titlecase }} &nbsp;</p>
+        <ion-icon src="assets/icons/profile.svg"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Agendamentos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content mode="ios"
+             [fullscreen]="true">
+  <ion-header mode="ios"
+              collapse="condense">
+    <ion-toolbar>
+      <ion-buttons collapse="true"
+                   slot="start">
+        <ion-back-button defaultHref="tabs"
+                         text=""
+                         icon="arrow-back-outline"></ion-back-button>
+
+      </ion-buttons>
+      <ion-buttons collapse="true"
+                   slot="end">
+        <ion-button (click)="navTo('meus-dados')"> {{this.userService.getUsuario().nomeCliente | titlecase }} &nbsp;
+          <ion-icon src="assets/icons/profile.svg"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+    <ion-toolbar>
+      <ion-title size="large">Agendamentos </ion-title>
+    </ion-toolbar>
+    <ion-toolbar>
+      <ion-title size="medium">{{this.userService.getUsuario().complemento | titlecase}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- <ion-row>
+    <ion-col size="6">
+      <ion-button (click)="createRandomEvents()"
+                  expand="block"
+                  fill="outline">
+        Add random events
+      </ion-button>
+    </ion-col>
+    <ion-col size="6">
+      <ion-button (click)="removeEvents()"
+                  expand="block"
+                  fill="outline">
+        Remove all events
+      </ion-button>
+    </ion-col>
+  </ion-row> -->
+
+  <ion-row>
+    <!-- Move back one screen of the slides -->
+    <ion-col size="2">
+      <ion-button fill="clear"
+                  (click)="back()">
+        <ion-icon name="arrow-back"
+                  slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-col>
+
+    <ion-col size="8"
+             class="ion-text-center title-month">
+      <h2>{{ viewTitle }}</h2>
+    </ion-col>
+
+    <!-- Move forward one screen of the slides -->
+    <ion-col size="2">
+      <ion-button fill="clear"
+                  (click)="next()">
+        <ion-icon name="arrow-forward"
+                  slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-col>
+  </ion-row>
+
+  <calendar [eventSource]="eventSource"
+            [calendarMode]="calendar.mode"
+            [currentDate]="calendar.currentDate"
+            [markDisabled]="markDisabled"
+            (onEventSelected)="onEventSelected($event)"
+            (onTitleChanged)="onViewTitleChanged($event)"
+            (onCurrentDateChanged)="onCurrentDateChanged($event)"
+            startHour="8"
+            endHour="20"
+            step="30"
+            startingDayWeek="1"
+            noEventsLabel="Sem agendamentos para essa data."
+            [monthviewDisplayEventTemplate]="template"
+            [monthviewEventDetailTemplate]="template2">
+  </calendar>
+
+  <ng-template #template
+               let-view="view"
+               let-row="row"
+               let-col="col">
+    <div [class.with-event]="view.dates[row*7+col].events.length">
+      {{view.dates[row*7+col].label}}
+      <div class="indicator-container">
+        <div class="event-indicator"
+             *ngFor="let e of view.dates[row*7+col].events"></div>
+      </div>
+    </div>
+  </ng-template>
+
+  <ng-template #template2
+               let-showEventDetail="showEventDetail"
+               let-selectedDate="selectedDate"
+               let-noEventsLabel="noEventsLabel">
+
+    <ion-card *ngIf="selectedDate.events.length==0"
+              (click)="adicionarAgendamento()">
+      <ion-card-header>
+        <ion-card-subtitle>{{noEventsLabel}}</ion-card-subtitle>
+        <ion-card-title>Clique para adicionar</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <!-- <p class="fileSize">{{evento.startTime|date:'HH:mm'}} - {{evento.endTime|date:'HH:mm'}}</p> -->
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card *ngFor="let evento of selectedDate.events"
+              (click)="onEventSelected(evento)">
+      <ion-card-header>
+        <ion-card-subtitle>{{evento.tipo | titlecase}}</ion-card-subtitle>
+        <ion-card-title>{{evento.title}}</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <span [class]="'status-'+evento.status">{{formatStatus(evento.status)}}</span>
+        <span class="fileSize">{{evento.startTime | date:'HH:mm'}} - {{evento.endTime | date:'HH:mm'}}</span>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- <div *ngFor="let evento of selectedDate.events"
+         (click)="onEventSelected(evento)">
+      {{evento|json}}
+    </div> -->
+
+    <ion-row *ngIf="selectedDate.events.length>0">
+      <ion-button fill="outline"
+                  (click)="adicionarAgendamento()">Adicionar agendamento</ion-button>
+    </ion-row>
+  </ng-template>
+
+
+</ion-content>

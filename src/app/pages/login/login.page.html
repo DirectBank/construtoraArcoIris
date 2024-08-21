@@ -1,0 +1,105 @@
+<ion-content>
+
+  <div class="loginBox"
+       [ngClass]="{'': !this.env.empresaAtual.loginBkgImg, 'loginBoxBkg': this.env.empresaAtual.loginBkgImg}"
+       [style.backgroundImage]="pageBkg()">
+    <div class="logo-cliente">
+      <img src="../../../assets/svg/logo_ompplus.svg" />
+    </div>
+
+    <p class="greeting-msg">
+      <b>Bem Vindo!</b><br>
+      Entre para continuar
+    </p>
+
+    <p class="info-adm"
+       *ngIf="this.env.empresaAtual.infoAdm">{{this.env.empresaAtual.infoAdm}}</p>
+
+    <form [formGroup]="loginForm"
+          class="loginBox-inner">
+
+      <ion-item color="transparent"
+                *ngIf="this.env.empresaAtual.personalizado == 2">
+        <ion-label position="floating">Código</ion-label>
+        <ion-input required
+                   formControlName="codigo"
+                   type="number"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent">
+        <ion-label position="floating">CPF</ion-label>
+        <ion-input required
+                   [brmasker]="{person: true}"
+                   formControlName="login"
+                   type="tel"></ion-input>
+      </ion-item>
+
+      <ion-item color="transparent"
+                *ngIf="!this.authBiometric">
+        <ion-label position="floating">Senha</ion-label>
+        <ion-input (keyup.enter)="closeKeyboard()"
+                   required
+                   formControlName="senha"
+                   [type]="showPassword ? 'text':'password'"></ion-input>
+        <ion-icon [name]="showPassword ? 'eye-off-outline' : 'eye-outline'"
+                  slot="end"
+                  (click)="showHide()"></ion-icon>
+
+      </ion-item>
+
+      <ion-item color="transparent"
+                lines="none"
+                class="lembrar"
+                *ngIf="!this.authBiometric">
+        <ion-label color="medium"
+                   style="overflow: visible;">Manter conectado</ion-label>
+        <ion-toggle slot="end"
+                    mode="ios"
+                    color="primary"
+                    [(ngModel)]="salvarSenha"
+                    [ngModelOptions]="{standalone: true}"></ion-toggle>
+      </ion-item>
+
+      <ion-item color="transparent"
+                lines="none"
+                *ngIf="!this.authBiometric">
+        <ion-button type="submit"
+                    expand="block"
+                    color="primary"
+                    class="btn-login"
+                    (click)="logInClick()"
+                    [disabled]="!loginForm.valid">Login</ion-button>
+      </ion-item>
+
+      <ion-button *ngIf="this.authBiometric"
+                  fill="clear"
+                  (click)="clearBiometricLogin()"
+                  expand="block">Não é você?</ion-button>
+      <ion-button id="esqueci"
+                  fill="clear"
+                  expand="block"
+                  routerLink="/esqueci-senha">Esqueci a senha!</ion-button>
+      <ion-button fill="clear"
+                  expand="block"
+                  routerLink="/login-colaborador">Sou colaborador</ion-button>
+
+    </form>
+  </div>
+
+  <ion-button type="submit"
+              expand="block"
+              class="btn-authBiometric"
+              *ngIf="this.authBiometric"
+              (click)="showFingerprintAuthDlg()">
+    <ion-icon name="finger-print-outline"
+              *ngIf="biometricMode=='finger' else faceicon"></ion-icon>
+    <ng-template #faceicon>
+      <ion-icon src="assets/icons/faceid.svg"></ion-icon>
+    </ng-template>
+  </ion-button>
+
+  <div class="login-footer">
+    by Workoffice - v {{ versaoApp }}
+  </div>
+
+</ion-content>

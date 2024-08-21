@@ -1,0 +1,26 @@
+h5 {
+  color: var(--ion-color-primary);
+  font-size: 20px;
+  font-weight: 600;
+  padding: 30px;
+  padding-bottom: 0px;
+}
+
+p {
+  font-size: 12px;
+  font-weight: 400;
+  padding: 30px;
+  text-align: justify;
+}
+
+.button {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  ion-button {
+    margin: 6% auto;
+    width: 225px;
+    height: 56px;
+    --border-radius: 4px;
+  }
+}

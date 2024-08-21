@@ -1,0 +1,144 @@
+<ion-header mode="ios"
+            translucent="true">
+  <ion-toolbar>
+    <ion-buttons collapse="true"
+                 (click)="this.navCtrl.back()"
+                 slot="start">
+      <ion-icon name="arrow-back-outline"></ion-icon>
+    </ion-buttons>
+    <ion-buttons collapse="true"
+                 slot="end">
+      <ion-button (click)="navTo('meus-dados')">
+        <p> {{this.userService.getUsuario().nomeCliente | titlecase }} &nbsp;</p>
+        <ion-icon src="assets/icons/profile.svg"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Personalização</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content mode="ios"
+             [fullscreen]="true">
+  <ion-header mode="ios"
+              collapse="condense">
+    <ion-toolbar>
+      <ion-buttons collapse="true"
+                   slot="start">
+        <ion-button (click)="this.navCtrl.back()">
+          <ion-icon name="arrow-back-outline"></ion-icon>
+        </ion-button>
+
+      </ion-buttons>
+      <ion-buttons collapse="true"
+                   slot="end">
+        <ion-button (click)="navTo('meus-dados')"> {{this.userService.getUsuario().nomeCliente | titlecase }} &nbsp;
+          <ion-icon src="assets/icons/profile.svg"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+    <ion-toolbar>
+      <ion-title size="large">{{this.userService.getUsuario().nomeEmpreendimento | titlecase}} </ion-title>
+    </ion-toolbar>
+    <ion-toolbar>
+      <ion-title size="medium">{{this.userService.getUsuario().complemento | titlecase}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-row>
+
+    <ion-slides #alternativas
+                id="alternativas"
+                pager="true"
+                (ionSlideDidChange)="alternativasChange($event)"
+                [options]="slideOptsAlternativas">
+
+      <ion-slide style="overflow: hidden;"
+                 *ngFor="let alternativa of enqueteAlternativas;let i=index;"
+                 [class.alternativaEscolhida]="alternativa.id_alternativa == alternativa.id_alternativaEscolhida">
+        <ion-row style="width: 100%;">
+          <div class="tituloAlternativa">
+
+            <ion-button *ngIf="i>0"
+                        (click)="alternativas.slidePrev()"
+                        color="transparent">
+              <ion-icon slot="icon-only"
+                        name="arrow-back"></ion-icon>
+            </ion-button>
+            <h4 style="flex: 1;">alternativa {{i+1}}</h4>
+            <ion-button *ngIf="i<enqueteAlternativas.length-1"
+                        (click)="alternativas.slideNext()"
+                        color="transparent">
+              <ion-icon slot="icon-only"
+                        name="arrow-forward"></ion-icon>
+            </ion-button>
+
+          </div>
+        </ion-row>
+
+        <ion-row>
+          <p>Naveque entre as imagens para visualizar os modelos disponíveis. E criar ambientes personalizados.</p>
+        </ion-row>
+
+        <ion-row *ngIf="alternativa.listaURL.length>0;else msgSemImagens">
+          <ion-slides class="slide-foto"
+                      #slideFoto
+                      (ionSlideDidChange)="fotosChange($event)"
+                      [options]="slideOptsAlternativas">
+            <ion-slide *ngFor="let foto of alternativa.listaURL;let x=index">
+              <div class="foto"
+                   (click)="abreImagem(alternativa.listaURL,x)"
+                   [style.backgroundImage]="'url('+foto+')'"></div>
+            </ion-slide>
+          </ion-slides>
+
+          <ion-row class="thumbnails">
+
+            <ion-thumbnail *ngFor="let thumb of alternativa.listaURL;let j=index"
+                           [class.selectedThumbnail]="fotoSelecionada==j"
+                           (click)="slideFoto.slideTo(j)">
+              <img [src]="thumb"
+                   alt=""
+                   srcset="">
+            </ion-thumbnail>
+          </ion-row>
+        </ion-row>
+
+        <ng-template #msgSemImagens>
+          <p>
+            Não foram incluídas imagens para esta alternativa
+          </p>
+        </ng-template>
+
+        <ion-row>
+          <p class="imagem-ilustrativa"
+             *ngIf="alternativa.listaURL.length>0">Imagens meramente ilustrativas.</p>
+          <h5 class="descricao">{{alternativa.descricao}}</h5>
+          <h5 class="preco"><strong>{{alternativa.valor | currency:'BRL'}}</strong></h5>
+        </ion-row>
+
+        <p *ngIf="alternativa.padrao==1">
+          Esta é a opção padrão
+        </p>
+        <p *ngIf="alternativa.id_alternativa == alternativa.id_alternativaEscolhida">
+          Esta é a opção que você escolheu
+        </p>
+
+      </ion-slide>
+
+    </ion-slides>
+    <p class="data-limite"
+       *ngIf="enqueteAlternativas[0]?.id_alternativaEscolhida==0">vote até {{enqueteAlternativas[0]?.dataLimite}}</p>
+
+  </ion-row>
+
+  <ion-row class="buttons-row"
+           *ngIf="enqueteAlternativas[0]?.encerrado==0">
+    <ion-button fill="outline"
+                (click)="this.navCtrl.back()">{{enqueteAlternativas[0]?.id_alternativaEscolhida==0?'Cancelar':'Voltar'
+      }} </ion-button>
+    <ion-button (click)="votar()"
+                fill="solid">Escolher</ion-button>
+    <!-- *ngIf="enqueteAlternativas[0]?.id_alternativaEscolhida==0" -->
+  </ion-row>
+
+</ion-content>

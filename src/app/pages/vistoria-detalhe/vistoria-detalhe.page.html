@@ -1,0 +1,72 @@
+<ion-header mode="ios" translucent="true">
+  <ion-toolbar>
+    <ion-buttons collapse="true"
+                 (click)="back()"
+                 slot="start">
+      <ion-icon src="assets/icons/back.svg"
+                style="max-width:18px;"
+                slot="icon-only"></ion-icon>
+    </ion-buttons>
+    <ion-title>{{detalhe.area | titlecase}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content mode="ios" [fullscreen]="true">
+  <ion-header mode="ios" collapse="condense">
+   <ion-toolbar>
+     <ion-buttons collapse="true"
+                  slot="start">
+       <ion-button (click)="back()">
+         <ion-icon src="assets/icons/back.svg"
+                   style="max-width:18px;"
+                   slot="icon-only"></ion-icon>
+                   <p class="condensed-title">{{detalhe.area | titlecase}}</p>
+       </ion-button>
+     </ion-buttons>
+   </ion-toolbar>
+ </ion-header>
+  <div class="div-select">
+    <ion-item lines="none">
+      <ion-select label="Default label" [placeholder]="(rotaColaborador?'Selecione o status':'Status')" [interfaceOptions]="{ header: 'Status'}" 
+        [(ngModel)]="detalhe.status" [value]="detalhe.status" [disabled]="!rotaColaborador">
+        <ion-select-option [value]="1">Aprovado</ion-select-option>
+        <ion-select-option [value]="2">Reprovado</ion-select-option>
+        <!-- <ion-select-option [value]="3">Aprovado com restrições</ion-select-option> -->
+      </ion-select>
+      <ion-icon name="ellipsis-vertical-outline" color="primary"></ion-icon>
+    </ion-item>
+  </div>
+
+  <div class="div-input">
+    <h6 *ngIf="rotaColaborador">Adicionar observações</h6>
+    <mat-form-field appearance="outline">
+      <mat-label>Observação</mat-label>
+      <textarea matInput [(ngModel)]="detalhe.descricao" [readonly]="!rotaColaborador"
+      (input)="ajustarAlturaTextarea($event)" #textarea></textarea>
+    </mat-form-field>
+  </div>
+  <h6 class="titulo-galeria" *ngIf="rotaColaborador">Enviar imagens</h6>
+  <div class="div-galeria">
+    <div class="new-image" (click)="select()" *ngIf="rotaColaborador">
+      <ion-icon name="camera-outline"></ion-icon>
+    </div>
+    <div *ngFor="let img of detalhe.listaURL; let i = index">
+      <ion-skeleton-text animated="true" *ngIf="img.loading else imgLoaded"></ion-skeleton-text>
+      <ng-template #imgLoaded >
+        <div [style.backgroundImage]="'url('+img.url+')'" class="img-galeria"
+          (click)="abreImagem(img.teste,true,i)">
+          <ion-button fill="clear" color="primary" class="delete-button" (click)="deleteImg($event,img,i)" *ngIf="rotaColaborador">
+            <ion-icon slot="icon-only" color="primary" name="close-circle"></ion-icon>
+          </ion-button>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+  <ion-row class="buttons"
+           *ngIf="rotaColaborador">
+    <ion-button fill="outline"
+                (click)="back()">Cancelar</ion-button>
+    <ion-button fill="solid"
+                (click)="salvar()">Salvar</ion-button>
+  </ion-row>
+
+</ion-content>

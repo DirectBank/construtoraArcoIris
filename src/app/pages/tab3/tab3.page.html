@@ -1,0 +1,280 @@
+<ion-header mode="ios"
+            translucent="true">
+  <ion-toolbar>
+    <ion-buttons collapse="true"
+                   slot="start">
+        <ion-back-button defaultHref="tabs"
+                         text=""
+                         icon="arrow-back-outline"></ion-back-button>
+    </ion-buttons>
+
+    <ion-buttons collapse="true"
+                 slot="end">
+      <ion-button (click)="navTo('meus-dados')">
+        <p> {{this.userService.getUsuario().nomeCliente | titlecase }} &nbsp;</p>
+        <ion-icon src="assets/icons/profile.svg"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Obras</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content mode="ios"
+             [fullscreen]="true">
+  <ion-header mode="ios"
+              collapse="condense">
+    <ion-toolbar>
+      <ion-buttons collapse="true"
+                   slot="start">
+        <ion-back-button defaultHref="tabs"
+                         text=""
+                         icon="arrow-back-outline"></ion-back-button>
+
+      </ion-buttons>
+      
+      <ion-buttons collapse="true"
+                   slot="end">
+        <ion-button (click)="navTo('meus-dados')"> {{this.userService.getUsuario().nomeCliente | titlecase }} &nbsp;
+          <ion-icon src="assets/icons/profile.svg"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+    <ion-toolbar>
+      <ion-title size="large">{{this.userService.getUsuario().nomeEmpreendimento | titlecase }} </ion-title>
+    </ion-toolbar>
+    <ion-toolbar>
+      <ion-title size="medium">{{this.userService.getUsuario().complemento | titlecase}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="ilustracao">
+    <img src="assets/svg/grua.svg"
+         alt="">
+    <p [style.bottom]="labelHeight(alturaDoPredio)">{{alturaDoPredio.toFixed()}}%</p>
+    <img src="assets/svg/predio.svg"
+         [style.bottom]="buildingHeight(alturaDoPredio)">
+  </div>
+
+  <div class="andamento">
+    <h3>Andamento da obra</h3>
+    <ion-item lines="none"
+              *ngFor="let item of evolucao;let i = index;">
+      <ion-label position="floating">{{item.etapaDescricao | titlecase}}</ion-label>
+      <ion-progress-bar mode="md"
+                        [value]="item.etapaEvolucao/100"></ion-progress-bar>
+      <span [style.marginLeft]="item.etapaEvolucao<90?item.etapaEvolucao:'90'+'%'">{{item.etapaEvolucao}}%</span>
+    </ion-item>
+  </div>
+
+  <div class="vistorias" *ngIf="this.id_vistoria">
+
+    <ion-card (click)="navToVistoria(this.id_vistoria)">
+      <ion-card-header>
+        <ion-card-subtitle>Veja detalhes</ion-card-subtitle>
+        <ion-card-title>Vistoria</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <p class="fileSize">Vistoria finalizada</p>
+      </ion-card-content>
+    </ion-card>
+
+  </div>
+
+  <!-- <div class="documentos">
+    <ion-card *ngIf="contrato?.urlArquivo?.length>0 else contratos"
+              (click)="downloadDocumento(contrato)">
+      <ion-card-header>
+        <ion-card-subtitle>Download</ion-card-subtitle>
+        <ion-card-title>Contrato</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <p class="fileSize">{{contrato.tamanho/1024 | number:'1.2-2'}} kB</p>
+      </ion-card-content>
+    </ion-card>
+
+    <ng-template #contratos>
+      <ion-card (click)="navTo('documentos','contrato')">
+        <ion-card-header>
+          <ion-card-title>Contratos</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+        </ion-card-content>
+      </ion-card>
+    </ng-template>
+
+    <ion-card *ngIf="termoVistoria?.urlArquivo?.length>0 else termosVistoria"
+              (click)="downloadDocumento(termoVistoria)">
+      <ion-card-header>
+        <ion-card-subtitle>Download</ion-card-subtitle>
+        <ion-card-title>Termo de Vistoria</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <p class="fileSize">{{termoVistoria.tamanho/1024 | number:'1.2-2'}} kB</p>
+      </ion-card-content>
+    </ion-card>
+
+    <ng-template #termosVistoria>
+      <ion-card (click)="navTo('documentos','termoVistoria')">
+        <ion-card-header>
+          <!-- <ion-card-subtitle>Download</ion-card-subtitle> --
+          <ion-card-title>Termos de vistoria</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+          <!-- <p class="fileSize">102 kB</p> --
+        </ion-card-content>
+      </ion-card>
+    </ng-template>
+
+  </div> -->
+
+  <div class="pagamento">
+    <ion-card>
+      <ion-card-header>
+        <!-- <ion-card-subtitle>Entrada 06/05/2021 de R$ 60.000,00</ion-card-subtitle> -->
+      </ion-card-header>
+
+      <ion-card-content *ngIf="planosPagamento?.length > 0">
+        <ion-item lines="none"
+                  color="transparent"
+                  *ngFor="let item of planosPagamento;let i = index;">
+          <ion-range min="0"
+                     disabled="true"
+                     max="100"
+                     [value]="item.percentualPagas">
+          </ion-range>
+          <span class="titulo">{{item.descricao | titlecase}} {{item.parcelasPagas}}</span>
+          <span class="progresso">{{item.percentualPagas}}%</span>
+
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <ion-skeleton-text *ngIf="isLoading" [animated]="true" class="galeria-load"></ion-skeleton-text>
+
+  <mat-expansion-panel *ngIf="!isLoading && galeria.length > 0" class="remove-mat-expansion-panel-padding styled-panel">
+    <mat-expansion-panel-header>
+      <h2 style="font-weight: 600;">Galeria</h2>
+    </mat-expansion-panel-header>
+    <div class="galeria">
+      <!-- <h3>Galeria</h3> -->
+      <div class="fotos">
+        <!-- <div *ngFor="let item of galeria;let i=index"
+            (click)="abreImagem(item.urlArquivo,true,i)"
+            class="foto"
+            [style.backgroundImage]="'url('+item.urlArquivo+')'">
+          </div> -->
+          <div *ngFor="let item of galeria;let i=index">
+            <ion-skeleton-text animated="true" class="foto-loading" *ngIf="item.loading else loaded"></ion-skeleton-text>
+            <ng-template #loaded>
+              <div
+              (click)="abreImagem(item.teste,true,i)"
+              class="foto"
+              [style.backgroundImage]="'url('+item.urlArquivo+')'"></div>
+            </ng-template>
+          </div>
+      </div>
+    </div>
+  </mat-expansion-panel>
+
+  <div class="aptoTipo">
+
+    <!-- <ion-card class="aptoTipo"
+              *ngIf="this.userService.getUsuario().tipoPlanta"
+              (click)="navTo('documentos','plantas')">
+      <ion-card-header>
+        <ion-card-subtitle>APTO Tipo</ion-card-subtitle>
+        <ion-card-title> Planta {{this.userService.getUsuario().tipoPlanta}}</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <!-- <p class="fileSize">102 kB</p> --
+      </ion-card-content>
+    </ion-card> -->
+    <!-- <p>Selecione a planta que deseja visualizar.</p> -->
+
+    <img *ngIf="plantaHumanizada?.urlArquivo"
+         [src]="plantaHumanizada?.urlArquivo"
+         (click)="abreImagem(plantaHumanizada?.urlArquivo,false)"
+         alt=""
+         class="implantacao">
+
+    <div class="endereco">
+      <p class="endLinha1">{{this.userService.getUsuario().endereco | titlecase}},
+        n°{{this.userService.getUsuario().numero | titlecase}}</p>
+      <p class="endLinha2">{{this.userService.getUsuario().bairro | titlecase}} | {{this.userService.getUsuario().cidade
+        | titlecase}}</p>
+    </div>
+
+    <!-- <img src="https://via.placeholder.com/341x209"
+         alt=""
+         class="mapa"> -->
+
+    <div class="mapouter mapa">
+      <div class="gmap_canvas">
+        <iframe width="100%"
+                height="250"
+                id="gmap_canvas"
+                [src]="urlMaps"
+                frameborder="0"
+                scrolling="no"
+                marginheight="0"
+                marginwidth="0"></iframe><br>
+        <!-- <style>
+          .mapouter {
+            position: relative;
+            text-align: right;
+            height: 250px;
+            width: 100%;
+            overflow: hidden;
+            margin: auto;
+          }
+        </style>
+        <style>
+          .gmap_canvas {
+            overflow: hidden;
+            background: none !important;
+            height: 209px;
+            width: 341px;
+          }
+        </style> -->
+        <style>
+          .mapouter {
+            position: relative;
+            text-align: right;
+            height: 250px;
+            /* width: 341px; */
+            overflow: hidden;
+            margin: auto;
+          }
+        </style>
+        <style>
+          .gmap_canvas {
+            overflow: hidden;
+            background: none !important;
+            height: 250px;
+          }
+        </style>
+      </div>
+    </div>
+  </div>
+
+  <div class="videoApresentacao"
+       *ngIf="this.userService.getUsuario().urlEmpreendimento">
+    <h3>Vídeo apresentação</h3>
+    <iframe width="341"
+            height="209"
+            [src]="urlVideo"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+
+  </div>
+  
+</ion-content>

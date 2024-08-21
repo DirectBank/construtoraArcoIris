@@ -1,0 +1,80 @@
+<ion-header mode="ios"
+            translucent="true">
+  <ion-toolbar>
+    <ion-buttons collapse="true"
+                 slot="start">
+      <ion-icon (click)="back()"
+                src="assets/icons/back.svg"
+                style="max-width:18px;"
+                slot="icon-only"></ion-icon>
+    </ion-buttons>
+    <ion-buttons collapse="true"
+                 slot="end">
+      <ion-button (click)="navTo('meus-dados')">
+        <p> {{this.userService.getUsuario().nomeCliente | titlecase }} &nbsp;</p>
+        <ion-icon src="assets/icons/profile.svg"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Personalizações</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content mode="ios"
+             [fullscreen]="true">
+  <ion-header mode="ios"
+              collapse="condense">
+    <ion-toolbar>
+      <ion-buttons collapse="true"
+                   slot="start">
+        <ion-back-button defaultHref="tabs"
+                         text=""
+                         icon="arrow-back-outline"></ion-back-button>
+
+      </ion-buttons>
+      <ion-buttons collapse="true"
+                   slot="end">
+        <ion-button (click)="navTo('meus-dados')"> {{this.userService.getUsuario().nomeCliente | titlecase }} &nbsp;
+          <ion-icon src="assets/icons/profile.svg"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+    <ion-toolbar>
+      <ion-title size="large">Personalizações </ion-title>
+    </ion-toolbar>
+    <ion-toolbar>
+      <ion-title size="medium">{{this.userService.getUsuario().complemento | titlecase}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-list>
+    <ion-card *ngIf="personalizacoes?.length==0">
+      <ion-card-header>
+        <ion-card-subtitle>Nenhuma personalização encontrada.</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+      </ion-card-content>
+    </ion-card>
+    <ion-card *ngFor="let personalizacao of personalizacoes"
+              [routerLink]="'personalizacao/'+personalizacao.id_enquete">
+      <ion-card-header>
+        <ion-card-subtitle>{{personalizacao.votado==1?'Já escolhido':'Escolher'}}</ion-card-subtitle>
+        <ion-card-title>{{personalizacao.descricao}}</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <p class="fileSize">Data limite: {{personalizacao.dataFim}}</p>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+
+  <ion-row class="buttons-row"
+           *ngIf="todosVotados() && personalizacoes[0]?.encerrado==0">
+    <ion-button fill="outline"
+                (click)="this.back()"> Voltar </ion-button>
+    <ion-button (click)="finalizarGrupo()"
+                fill="solid">Finalizar</ion-button>
+    <!-- *ngIf="enqueteAlternativas[0]?.id_alternativaEscolhida==0" -->
+  </ion-row>
+
+</ion-content>
