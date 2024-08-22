@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "674349884261",
+    "project_id": "construtora-arco",
+    "storage_bucket": "construtora-arco.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:674349884261:android:7f34792fa4fa81d2ed778c",
+        "android_client_info": {
+          "package_name": "br.com.arcoiris.arcoiris"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfNPZef7MegoUX_7j3e_-jFs5UTDrtpZE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

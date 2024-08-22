@@ -17,7 +17,7 @@ const getUrl = () => {
 }
 
 // var nomeEmpresaAtual = project;
-var nomeEmpresaAtual = "engeplus";
+var nomeEmpresaAtual = "arcoiris";
 const empresaAtual = {
   codigo: configEmpresa[nomeEmpresaAtual].codigo,
   bundleId:  configEmpresa[nomeEmpresaAtual].appId,
