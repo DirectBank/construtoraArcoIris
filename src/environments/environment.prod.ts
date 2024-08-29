@@ -1,7 +1,7 @@
 //const URL = 'https://api.workoffice.com.br/omp/api/' //Https Produção
 // const URL = 'https://woserviceapi.brazilsouth.cloudapp.azure.com' //Https Produção Azure
 const URL = 'https://ompapi.azurewebsites.net'; //Https Produção Azure https://ompapi.azurewebsites.net/unidadez/api/v3
-// const URL = 'http://192.168.15.19:3030'
+ //const URL = 'http://192.168.15.19:3030'
 const encrDecrKey = 'Yco1e?mb8C&8KdPE-Hz>A1Q(zGT0Xcwu4CMA}0b13Ib$lq)Xzi'
 
 

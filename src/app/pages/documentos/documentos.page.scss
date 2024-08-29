@@ -17,8 +17,21 @@ ion-title.title-medium {
   bottom: auto;
   align-items: flex-start;
 }
+
+mat-expansion-panel{
+  background: var(--ion-color-primary);
+  color: var(--ion-color-primary-yellow) !important;
+  border-radius: 0px;
+  padding: 5px;
+  margin: 15px 0;
+}
+.mat-expansion-indicator{
+  color: var(--ion-color-primary-yellow) !important;
+}
+
+
 ion-card {
-  --background: var(--ion-color-primary-gradient);
+  --background: var(--ion-color-primary);
   color: var(--ion-color-primary-yellow);
   border-radius: 10px;
   ion-card-header {
@@ -53,12 +66,12 @@ ion-row.documentos {
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: var(--ion-color-primary);
+    color: var(--ion-color-primary-yellow);
 
     ion-icon.icon-documento {
       font-size: 45px !important;
       --ionicon-stroke-width: 30px;
-      color: var(--ion-color-primary);
+      color: var(--ion-color-primary-yellow);
     }
 
     h4 {
@@ -81,4 +94,9 @@ mat-expansion-panel-header {
 
 ::ng-deep .mat-expansion-panel:not(.mat-expanded):not([aria-disabled=true]) .mat-expansion-panel-header:hover{
   background: var(--ion-color-screen-background) !important;
+}
+
+
+::ng-deep .mat-expansion-indicator::after{
+  color: var(--ion-color-primary-yellow) !important;
 }

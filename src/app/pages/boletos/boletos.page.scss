@@ -29,9 +29,12 @@ ion-card:active {
   transform: none !important;
 }
 ion-card {
-  --background: var(--ion-color-primary-gradient);
+  --background: var(--ion-color-primary);
   color: var(--ion-color-primary-yellow);
-  border-radius: 10px;
+  border-radius: 0px;
+  padding: 5px;
+  margin: 15px 0;
+  
   ion-card-header {
     padding-bottom: 5px;
     ion-card-title,

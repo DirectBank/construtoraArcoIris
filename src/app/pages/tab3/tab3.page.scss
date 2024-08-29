@@ -33,7 +33,7 @@ ion-title.title-large {
 
 @media only screen and (max-width: 600px) {
     .ilustracao {
-        height: 80vh;
+        height: 60vh;
         position: relative;
         overflow: hidden;
         img {
@@ -41,6 +41,8 @@ ion-title.title-large {
             bottom: 0;
             width: 100%;
             transition: all 3s;
+            left: 40%;
+            margin-left: -25%;
         }
         p {
             transition: all 3s;
@@ -49,13 +51,22 @@ ion-title.title-large {
             position: absolute;
             left: 5%;
         }
+        .retroescavadeira{
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            width: 34%;
+            margin-left: -40%;
+        }
     }
 
     .pagamento {
         ion-card {
-            --background: var(--ion-color-primary-gradient);
+            --background: var(--ion-color-primary);
             color: var(--ion-color-primary-yellow);
-            border-radius: 10px;
+            border-radius: 0px;
+            margin: 15px 0;
+
             ion-card-header {
                 padding-bottom: 5px;
                 ion-card-subtitle {
@@ -153,9 +164,12 @@ ion-title.title-large {
     
     .vistorias {
         ion-card {
-            --background: var(--ion-color-primary-gradient);
+            --background: var(--ion-color-primary);
             color: var(--ion-color-primary-yellow);
-            border-radius: 10px;
+            border-radius: 0px;
+            padding: 5px;
+            margin: 15px 0;
+    
             ion-card-header {
                 padding-bottom: 5px;
                 ion-card-title,
@@ -188,9 +202,12 @@ ion-title.title-large {
         display: grid;
         grid-template-columns: 1fr 1fr;
         ion-card {
-            --background: var(--ion-color-primary-gradient);
+            --background: var(--ion-color-primary);
             color: var(--ion-color-primary-yellow);
-            border-radius: 10px;
+            border-radius: 0px;
+            padding: 5px;
+            margin: 15px 0;
+            
             ion-card-header {
                 padding-bottom: 5px;
                 ion-card-title,
@@ -279,9 +296,12 @@ ion-title.title-large {
         padding-bottom: 100px;
 
         ion-card {
-            --background: var(--ion-color-primary-gradient);
+            --background: var(--ion-color-primary);
             color: var(--ion-color-primary-yellow);
-            border-radius: 10px;
+            border-radius: 0px;
+            padding: 5px;
+            margin: 15px 0;
+    
             ion-card-header {
                 padding-bottom: 5px;
                 ion-card-title,
@@ -344,7 +364,7 @@ ion-title.title-large {
 
 @media only screen and (min-width: 600px) {
     .ilustracao {
-        height: 80vh;
+        height: 68vh;
         position: relative;
         overflow: hidden;
         img {
@@ -354,7 +374,7 @@ ion-title.title-large {
             transition: all 3s;
             margin: auto;
             left: 50%;
-            margin-left: -30%;
+            margin-left: -10%;
         }
         p {
             transition: all 3s;
@@ -363,13 +383,21 @@ ion-title.title-large {
             position: absolute;
             left: 25%;
         }
+        .retroescavadeira{
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            width: 30%;
+            margin-left: -30%;
+        }
     }
 
     .pagamento {
         ion-card {
-            --background: var(--ion-color-primary-gradient);
+            --background: var(--ion-color-primary);
             color: var(--ion-color-primary-yellow);
-            border-radius: 10px;
+            border-radius: 0px;
+            margin: 15px 0 ;
             ion-card-header {
                 padding-bottom: 5px;
                 ion-card-subtitle {
@@ -467,9 +495,12 @@ ion-title.title-large {
 
     .vistorias {
         ion-card {
-            --background: var(--ion-color-primary-gradient);
+            --background: var(--ion-color-primary);
             color: var(--ion-color-primary-yellow);
-            border-radius: 10px;
+            border-radius: 0px;
+            padding: 5px;
+            margin: 15px 0;
+            
             ion-card-header {
                 padding-bottom: 5px;
                 ion-card-title,
@@ -501,9 +532,12 @@ ion-title.title-large {
         display: grid;
         grid-template-columns: 1fr 1fr;
         ion-card {
-            --background: var(--ion-color-primary-gradient);
+            --background: var(--ion-color-primary);
             color: var(--ion-color-primary-yellow);
-            border-radius: 10px;
+            border-radius: 0px;
+            padding: 5px;
+            margin: 15px 0;
+            
             ion-card-header {
                 padding-bottom: 5px;
                 ion-card-title,
@@ -589,9 +623,12 @@ ion-title.title-large {
         padding-bottom: 20px;
 
         ion-card {
-            --background: var(--ion-color-primary-gradient);
+            --background: var(--ion-color-primary);
             color: var(--ion-color-primary-yellow);
-            border-radius: 10px;
+            border-radius: 0px;
+            padding: 5px;
+            margin: 15px 0;
+    
             ion-card-header {
                 padding-bottom: 5px;
                 ion-card-title,

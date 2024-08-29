@@ -34,8 +34,12 @@ ion-title.title-medium {
 @media only screen and (max-width: 600px) {
   ion-card {
     // --background: linear-gradient(107deg, var(--ion-color-primary), #999999);
-    --background: var(--ion-color-primary-gradient);
-    border-radius:10px;
+    --background: var(--ion-color-primary);
+    color: var(--ion-color-primary-yellow);
+    border-radius: 0px;
+    padding: 5px;
+    margin: 15px 0;
+
     color: var(--ion-color-primary-yellow);
     ion-card-header {
       padding-bottom: 5px;
@@ -185,9 +189,12 @@ ion-title.title-medium {
 @media only screen and (min-width: 600px) {
   ion-card {
     // --background: linear-gradient(107deg, var(--ion-color-primary), #999999);
-    --background: var(--ion-color-primary-gradient);
+    --background: var(--ion-color-primary);
     color: var(--ion-color-primary-yellow);
-    border-radius:10px;
+    border-radius: 0px;
+    padding: 5px;
+    margin: 15px 0;
+    
     ion-card-header {
       padding-bottom: 5px;
       ion-card-title,
