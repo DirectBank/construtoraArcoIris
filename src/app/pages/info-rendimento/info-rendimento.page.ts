@@ -26,18 +26,19 @@ export class InfoRendimentoPage implements OnInit {
   ) { }
 
   ionViewDidEnter(){
-    this.infoRendimentoService.buscaRendimentosPendentes().then((response: any) => {
-      response = response.reduce((r, a) => {
-        r[a.id_contrato] = r[a.id_contrato] || [];
-        r[a.id_contrato].push(a);
-        return r;
-      }, Object.create(null));
-      this.infos = Object.keys(response).map(key => response[key]);
-      console.log(this.infos);
-    }).catch((err) => {
-      console.log(err);
-      
-    });
+    this.infoRendimentoService.buscaRendimentosPendentes()
+      .then((response: any) => {
+        response = response.reduce((r, a) => {
+          r[a.id_contrato] = r[a.id_contrato] || [];
+          r[a.id_contrato].push(a);
+          return r;
+        }, Object.create(null));
+        this.infos = Object.keys(response).map(key => response[key]);
+        console.log(this.infos);
+      })
+      .catch((err) => {
+        console.error(err);
+      })
   }
 
   ngOnInit() {

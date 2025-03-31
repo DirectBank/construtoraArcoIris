@@ -1,9 +1,9 @@
 import project from './choosen-project'
 
-// const URL = 'http://localhost:3030';
+const URL = 'http://localhost:3030';
 // const URL = 'http://192.168.15.2:3030';
 // const URL = 'https://woserviceapi.brazilsouth.cloudapp.azure.com'; //Https Produção Azure
-const URL = 'https://ompapi.azurewebsites.net'; //Https Produção Azure https://ompapi.azurewebsites.net/unidadez/api/v3
+// const URL = 'https://ompapi.azurewebsites.net'; //Https Produção Azure https://ompapi.azurewebsites.net/unidadez/api/v3
  
 const encrDecrKey = 'Yco1e?mb8C&8KdPE-Hz>A1Q(zGT0Xcwu4CMA}0b13Ib$lq)Xzi'
 var configEmpresa = require('../../scripts/empresas.json');

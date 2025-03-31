@@ -203,15 +203,16 @@ export class AgendamentoPage implements OnInit {
         this.horas = this.horariosVisitas[i][this.selectedDate.getDay()].hourValues;
         this.hora1 = this.horariosVisitas[i][this.selectedDate.getDay()].hora1;
         this.hora2 = this.horariosVisitas[i][this.selectedDate.getDay()].hora4 ? this.horariosVisitas[i][this.selectedDate.getDay()].hora4 : this.horariosVisitas[i][this.selectedDate.getDay()].hora2;
-        console.log(this.horas, this.hora1, this.hora2);
+        // console.log(this.horas, this.hora1, this.hora2);
         return
-      }else if(this.horariosVisitas[i][this.selectedDate.getDay()].horaFixa && +this.horariosVisitas[i][0].id_tipoVisita === +this.novoAgendamento.id_tipoVisita){
+      }
+      else if(this.horariosVisitas[i][this.selectedDate.getDay()].horaFixa && +this.horariosVisitas[i][0].id_tipoVisita === +this.novoAgendamento.id_tipoVisita){
       // }else if(this.horariosVisitas[i][this.selectedDate.getDay()].horaFixa && +this.horariosVisitas[i][0].id_tipoVisita === 59){
         this.horaFixa = true;
-        console.log(this.horariosVisitas[i][this.selectedDate.getDay()]);
+        // console.log(this.horariosVisitas[i][this.selectedDate.getDay()]);
         this.horas = this.horariosVisitas[i][this.selectedDate.getDay()].hourValues;
         return
-      };
+      }
     }
     
   }
@@ -233,7 +234,7 @@ export class AgendamentoPage implements OnInit {
         let h3 = +dia.hora3.slice(0,2) //dia.hora3 ? +dia.hora3.slice(0,2) : false
         let h4 = +dia.hora4.slice(0,2) //dia.hora4 ? +dia.hora4.slice(0,2) : false
         let hourValues: any = []
-        if(dia.horaFixa){
+        if(+dia.horaFixa){
           [h1,h2,h3,h4].forEach(hora => {
             if(hora){
               hourValues.push(hora)

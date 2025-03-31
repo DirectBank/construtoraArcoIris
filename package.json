@@ -1,10 +1,10 @@
 {
   "name": "construtora-app",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "bundleName": "br.com.arcoiris.arcoiris",
   "author": "PRG Software",
   "anoCriacao": "2024",
-  "versionCode": 6,
+  "versionCode": 7,
   "homepage": "https://workoffice.net.br/",
   "scripts": {
     "ng": "ng",
